@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment } from 'react';
 
 const Graph = props => {
   // y axis is "px from the top". so it works backwards.
