@@ -53,7 +53,7 @@ async function perGame(url) {
         : $("[data-stat='pts']", e).text(),
       assists: $("[data-stat='ast']", e).text() === ''
         ? 'NA'
-        : $("[data-stat='trb']", e).text(),
+        : $("[data-stat='ast']", e).text(),
       rebounds: $("[data-stat='trb']", e).text() === ''
         ? 'NA'
         : $("[data-stat='trb']", e).text(),
