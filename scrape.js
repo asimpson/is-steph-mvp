@@ -64,8 +64,7 @@ async function perGame(url) {
 
 async function stephCurrentAvgs() {
   let advanced;
-  const url = 'https://www.basketball-reference.com/players/c/curryst01.html';
-  const html = await request(url);
+  const html = await request(steph);
   const parser = new htmlparser.Parser(
     {
       oncomment: function(data) {
@@ -90,11 +89,11 @@ async function stephCurrentAvgs() {
   };
 }
 
-async function ghostPerGame() {}
-
-// perGame('https://www.basketball-reference.com/players/c/curryst01/gamelog/2018').then(x => console.log(x));
+perGame(
+  'https://www.basketball-reference.com/players/c/curryst01/gamelog/2018'
+).then(x => console.log(x));
 // ghost().then(x => console.log(x));
 // stephCurrentAvgs().then(x => console.log(x));
-perGame(
-  'https://www.basketball-reference.com/players/c/curryst01/gamelog/2016'
-).then(x => console.log(x));
+// perGame(
+//   'https://www.basketball-reference.com/players/c/curryst01/gamelog/2016'
+// ).then(x => console.log(x));
