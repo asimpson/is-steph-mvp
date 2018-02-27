@@ -22,21 +22,76 @@ export default class App extends Component {
   }
 
   render() {
+    const types = {
+      pts: 'points',
+      ast: 'assists',
+      rbd: 'rebounds',
+    };
     const width = 82 * 40;
-    const viewBox = `0 0 ${width} 200`;
+    const max =
+      Math.max(
+        ...ghost
+          .concat(current)
+          .map(x => x[types[this.state.graphType]])
+          .filter(x => x !== 'NA')
+      ) + 10;
+
     const type = {
       ast: 'Assists',
       pts: 'Points',
       rbd: 'Rebounds',
     };
+
+    const VERTSCALE = 5;
+    const maxScaled = max * VERTSCALE;
+    const segmentScale = 10 * VERTSCALE;
+    const segments = [
+      ...Array(Math.ceil(maxScaled / segmentScale)).keys(),
+    ].map(x =>
+      <line
+        key={x}
+        strokeWidth="1"
+        stroke="white"
+        x1="2"
+        x2={width}
+        y1={x === 0 ? maxScaled : maxScaled - x * segmentScale}
+        y2={x === 0 ? maxScaled : maxScaled - x * segmentScale}
+      />
+    );
     return (
+      // transition: ease-in-out .5s;
+      // transform: translate(-200px, 0);
       <Fragment>
-        <div>
+        <div style={{ overflowX: 'hidden' }}>
           <Select changed={this.selection} />
           <p>{type[this.state.graphType]} Per Game Avg</p>
-          <svg viewBox={viewBox} version="1.1">
-            <Graph type={this.state.graphType} data={ghost} ghost={true} />
-            <Graph type={this.state.graphType} data={current} ghost={false} />
+          <svg
+            // style={{ overflowX: 'scroll' }}
+            height={max * VERTSCALE + 10}
+            width={width}
+            version="1.1"
+          >
+            {segments}
+            <line
+              strokeWidth="1"
+              stroke="white"
+              x1="2"
+              x2="2"
+              y1="0"
+              y2={max * VERTSCALE}
+            />
+            <Graph
+              max={max * VERTSCALE}
+              type={this.state.graphType}
+              data={ghost}
+              ghost={true}
+            />
+            <Graph
+              max={max * VERTSCALE}
+              type={this.state.graphType}
+              data={current}
+              ghost={false}
+            />
           </svg>
         </div>
 

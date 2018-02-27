@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 
 const Graph = props => {
+  const VERTSCALE = 5;
   // y axis is "px from the top". so it works backwards.
   // we need to do heigth - points to get our point.
   const types = {
@@ -10,7 +11,12 @@ const Graph = props => {
   };
   const data = types[props.type]
     .filter(x => x !== 'NA')
-    .map((x, i) => (i === 0 ? `10,${100 - x}` : `${40 * i + 10},${100 - x}`));
+    .map(
+      (x, i) =>
+        i === 0
+          ? `10,${props.max - x * VERTSCALE}`
+          : `${40 * i + 10},${props.max - x * VERTSCALE}`
+    );
 
   const circles = data.map((x, i) =>
     <circle
