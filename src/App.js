@@ -11,14 +11,32 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.selection = this.selection.bind(this);
+    this.triggerAnimation = this.triggerAnimation.bind(this);
 
     this.state = {
       graphType: 'pts',
+      animateStyles: {},
     };
+  }
+
+  componentDidMount() {
+    window.setTimeout(this.triggerAnimation, 300);
   }
 
   selection(e) {
     this.setState({ graphType: e.target.value });
+  }
+
+  triggerAnimation() {
+    const currentDistance =
+      current.map(x => x.points).filter(x => x !== 'NA').length * 40 -
+      window.outerWidth / 2;
+    this.setState({
+      animateStyles: {
+        transition: 'ease-in-out 1.5s',
+        transform: `translateX(-${currentDistance}px)`,
+      },
+    });
   }
 
   render() {
@@ -66,7 +84,7 @@ export default class App extends Component {
           <Select changed={this.selection} />
           <p>{type[this.state.graphType]} Per Game Avg</p>
           <svg
-            // style={{ overflowX: 'scroll' }}
+            style={this.state.animateStyles}
             height={max * VERTSCALE + 10}
             width={width}
             version="1.1"
