@@ -30,7 +30,7 @@ export default class App extends Component {
   triggerAnimation() {
     const currentDistance =
       current.map(x => x.points).filter(x => x !== 'NA').length * 40 -
-      window.outerWidth / 2;
+      document.body.getBoundingClientRect().width / 2;
     this.setState({
       animateStyles: {
         transition: 'ease-in-out 1.5s',
