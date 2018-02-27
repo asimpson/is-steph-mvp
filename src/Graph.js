@@ -4,12 +4,9 @@ const Graph = props => {
   const VERTSCALE = 5;
   // y axis is "px from the top". so it works backwards.
   // we need to do heigth - points to get our point.
-  const types = {
-    ast: props.data.map(x => x.assists),
-    pts: props.data.map(x => x.points),
-    rbd: props.data.map(x => x.rebounds),
-  };
-  const data = types[props.type]
+
+  const data = props.data
+    .map(x => x[props.type])
     .filter(x => x !== 'NA')
     .map(
       (x, i) =>

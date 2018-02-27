@@ -14,7 +14,7 @@ export default class App extends Component {
     this.triggerAnimation = this.triggerAnimation.bind(this);
 
     this.state = {
-      graphType: 'pts',
+      graphType: 'points',
       animateStyles: {},
     };
   }
@@ -40,25 +40,14 @@ export default class App extends Component {
   }
 
   render() {
-    const types = {
-      pts: 'points',
-      ast: 'assists',
-      rbd: 'rebounds',
-    };
     const width = 82 * 40;
     const max =
       Math.max(
         ...ghost
           .concat(current)
-          .map(x => x[types[this.state.graphType]])
+          .map(x => x[this.state.graphType])
           .filter(x => x !== 'NA')
       ) + 10;
-
-    const type = {
-      ast: 'Assists',
-      pts: 'Points',
-      rbd: 'Rebounds',
-    };
 
     const VERTSCALE = 5;
     const maxScaled = max * VERTSCALE;
@@ -77,12 +66,10 @@ export default class App extends Component {
       />
     );
     return (
-      // transition: ease-in-out .5s;
-      // transform: translate(-200px, 0);
       <Fragment>
         <div style={{ overflowX: 'hidden' }}>
           <Select changed={this.selection} />
-          <p>{type[this.state.graphType]} Per Game Avg</p>
+          <p>{this.state.graphType} Per Game Avg</p>
           <svg
             style={this.state.animateStyles}
             height={max * VERTSCALE + 10}
@@ -96,16 +83,16 @@ export default class App extends Component {
               x1="2"
               x2="2"
               y1="0"
-              y2={max * VERTSCALE}
+              y2={maxScaled}
             />
             <Graph
-              max={max * VERTSCALE}
+              max={maxScaled}
               type={this.state.graphType}
               data={ghost}
               ghost={true}
             />
             <Graph
-              max={max * VERTSCALE}
+              max={maxScaled}
               type={this.state.graphType}
               data={current}
               ghost={false}
