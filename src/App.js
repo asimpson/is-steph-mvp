@@ -67,12 +67,15 @@ export default class App extends Component {
     );
     return (
       <Fragment>
-        <div style={{ overflowX: 'hidden' }}>
+        <div
+          ref={ref => (this.scrollable = ref)}
+          style={{ overflowX: 'scroll', WebkitOverflowScrolling: 'touch' }}
+        >
           <Select changed={this.selection} />
           <p>{this.state.graphType} Per Game Avg</p>
           <svg
             style={this.state.animateStyles}
-            height={max * VERTSCALE + 10}
+            height={max * VERTSCALE + 50}
             width={width}
             version="1.1"
           >
