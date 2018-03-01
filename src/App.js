@@ -16,6 +16,7 @@ export default class App extends Component {
     this.state = {
       graphType: 'points',
       animateStyles: {},
+      scrolled: 0,
     };
   }
 
@@ -31,12 +32,12 @@ export default class App extends Component {
     const currentDistance =
       current.map(x => x.points).filter(x => x !== 'NA').length * 40 -
       document.body.getBoundingClientRect().width / 2;
-    this.setState({
-      animateStyles: {
-        transition: 'ease-in-out 1.5s',
-        transform: `translateX(-${currentDistance}px)`,
-      },
-    });
+    // this.setState({
+    //   animateStyles: {
+    //     transition: 'ease-in-out 1.5s',
+    //     transform: `translateX(-${currentDistance}px)`,
+    //   },
+    // });
   }
 
   render() {
@@ -65,6 +66,14 @@ export default class App extends Component {
         y2={x === 0 ? maxScaled : maxScaled - x * segmentScale}
       />
     );
+    const textHeaderStyles = {
+      color: '#0068B8',
+      fontWeight: '700',
+      fontSize: '24px',
+      lineHeight: '1',
+      margin: '0',
+      marginBottom: '0.5rem',
+    };
     return (
       <Fragment>
         <div
@@ -103,29 +112,21 @@ export default class App extends Component {
           </svg>
         </div>
 
-        <div>
-          <p>TS (True shooting percentage)</p>
-          <svg
-            style={{ maxWidth: '100px' }}
-            viewBox="0 0 100 100"
-            version="1.1"
-          >
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div>
+            <p style={textHeaderStyles}>TS (True shooting percentage)</p>
             <Bar ghost={ghostAvg} current={currentAvg} type="TS" />
-          </svg>
-        </div>
+          </div>
 
-        <div>
-          <p>PER (Player Efficency Rating)</p>
-          <svg style={{ maxWidth: '50px' }} viewBox="0 0 50 100" version="1.1">
+          <div>
+            <p style={textHeaderStyles}>PER (Player Efficency Rating)</p>
             <Bar ghost={ghostAvg} current={currentAvg} type="PER" />
-          </svg>
-        </div>
+          </div>
 
-        <div>
-          <p>WS (Win Shares)</p>
-          <svg style={{ maxWidth: '30px' }} viewBox="0 0 30 100" version="1.1">
+          <div>
+            <p style={textHeaderStyles}>WS (Win Shares)</p>
             <Bar ghost={ghostAvg} current={currentAvg} type="WS" />
-          </svg>
+          </div>
         </div>
       </Fragment>
     );
