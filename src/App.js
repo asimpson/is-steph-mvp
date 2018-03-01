@@ -12,6 +12,7 @@ export default class App extends Component {
     super(props);
     this.selection = this.selection.bind(this);
     this.triggerAnimation = this.triggerAnimation.bind(this);
+    this.tearDownAfterAnimation = this.tearDownAfterAnimation.bind(this);
 
     this.state = {
       graphType: 'points',
@@ -20,24 +21,41 @@ export default class App extends Component {
     };
   }
 
+  tearDownAfterAnimation(distance) {
+    document.addEventListener('transitionend', e => {
+      if (e.target === this.graphSvg && e.propertyName === 'transform') {
+        this.setState(() => {
+          return {
+            animateStyles: {
+              transition: 'unset',
+              transform: 'unset',
+            },
+          };
+        }, () => (this.scrollable.scrollLeft = distance));
+      }
+    });
+  }
+
   componentDidMount() {
-    window.setTimeout(this.triggerAnimation, 300);
+    const currentDistance =
+      current.map(x => x.points).filter(x => x !== 'NA').length * 40 -
+      document.body.getBoundingClientRect().width / 2;
+    window.setTimeout(this.triggerAnimation, 300, currentDistance);
+    this.tearDownAfterAnimation(currentDistance);
   }
 
   selection(e) {
     this.setState({ graphType: e.target.value });
   }
 
-  triggerAnimation() {
-    const currentDistance =
-      current.map(x => x.points).filter(x => x !== 'NA').length * 40 -
-      document.body.getBoundingClientRect().width / 2;
-    // this.setState({
-    //   animateStyles: {
-    //     transition: 'ease-in-out 1.5s',
-    //     transform: `translateX(-${currentDistance}px)`,
-    //   },
-    // });
+  triggerAnimation(distance) {
+    this.scrollable.scrollLeft = 0;
+    this.setState({
+      animateStyles: {
+        transition: 'ease-in-out 4s',
+        transform: `translateX(-${distance}px)`,
+      },
+    });
   }
 
   render() {
@@ -98,6 +116,7 @@ export default class App extends Component {
             height={max * VERTSCALE + 50}
             width={width}
             version="1.1"
+            ref={ref => (this.graphSvg = ref)}
           >
             {segments}
             <line
