@@ -2,7 +2,7 @@ import React, { Fragment, Component } from 'react';
 
 import Graph from './Graph';
 import Bar from './Bar';
-import Select from './Select';
+import Controls from './Controls';
 import ghost from './ghost';
 import current from './current';
 import { ghostAvg, currentAvg } from './avg';
@@ -105,12 +105,14 @@ export default class App extends Component {
     };
     return (
       <Fragment>
+        <Controls selection={this.selection} />
         <div
           ref={ref => (this.scrollable = ref)}
-          style={{ overflowX: 'scroll', WebkitOverflowScrolling: 'touch' }}
+          style={{
+            overflowX: 'scroll',
+            WebkitOverflowScrolling: 'touch',
+          }}
         >
-          <Select changed={this.selection} />
-          <p>{this.state.graphType} Per Game Avg</p>
           <svg
             style={this.state.animateStyles}
             height={max * VERTSCALE + 50}
