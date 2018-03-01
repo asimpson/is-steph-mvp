@@ -11,6 +11,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.selection = this.selection.bind(this);
+    this.challenge = this.challenge.bind(this);
     this.triggerAnimation = this.triggerAnimation.bind(this);
     this.tearDownAfterAnimation = this.tearDownAfterAnimation.bind(this);
 
@@ -18,6 +19,7 @@ export default class App extends Component {
       graphType: 'points',
       animateStyles: {},
       scrolled: 0,
+      challenge: 'current',
     };
   }
 
@@ -46,6 +48,10 @@ export default class App extends Component {
 
   selection(e) {
     this.setState({ graphType: e.target.value });
+  }
+
+  challenge(e) {
+    this.setState({ challenger: e.target.value });
   }
 
   triggerAnimation(distance) {
@@ -105,7 +111,7 @@ export default class App extends Component {
     };
     return (
       <Fragment>
-        <Controls selection={this.selection} />
+        <Controls challenge={this.challenge} selection={this.selection} />
         <div
           ref={ref => (this.scrollable = ref)}
           style={{

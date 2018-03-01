@@ -16,9 +16,7 @@ const Select = props => {
 
   return (
     <select style={style} onChange={props.changed} name="graph">
-      <option value="points">Points per game average</option>
-      <option value="assists">Assists per game average</option>
-      <option value="rebounds">Rebounds per game average</option>
+      {props.children}
     </select>
   );
 };

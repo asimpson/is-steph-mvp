@@ -30,7 +30,7 @@ async function ghost() {
 
   const PER = $a('#advanced\\.2016 [data-stat="per"]').text();
   const TS = $a('#advanced\\.2016 [data-stat="ts_pct"]').text();
-  const WS = $a('#advanced\\.2016 [data-stat="ws"]').text();
+  const WS = $a('#advanced\\.2016 [data-stat="ws_per_48"]').text();
   const PTS = $('#per_game\\.2016 [data-stat="pts_per_g"]').text();
   const AST = $('#per_game\\.2016 [data-stat="ast_per_g"]').text();
 
@@ -51,6 +51,9 @@ async function perGame(url) {
       points: $("[data-stat='pts']", e).text() === ''
         ? 'NA'
         : $("[data-stat='pts']", e).text(),
+      opp: $("[data-stat='opp_id']", e).text() === ''
+        ? 'NA'
+        : $("[data-stat='opp_id']", e).text(),
       assists: $("[data-stat='ast']", e).text() === ''
         ? 'NA'
         : $("[data-stat='ast']", e).text(),
@@ -81,7 +84,7 @@ async function stephCurrentAvgs() {
   const $ = cheerio.load(advanced);
   const PER = $('tbody [data-stat="per"]').last().text();
   const TS = $('tbody [data-stat="ts_pct"]').last().text();
-  const WS = $('tbody [data-stat="ws"]').last().text();
+  const WS = $('tbody [data-stat="ws_per_48"]').last().text();
   return {
     PER,
     TS,
