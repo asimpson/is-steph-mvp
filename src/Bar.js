@@ -2,10 +2,13 @@ import React, { Fragment } from 'react';
 
 const determineWidth = (props, target) => {
   if (props.type === 'TS') {
+    // true shooting is a percentage so 100 makes sense
     return `${props[target]['TS'] * 100}%`;
   } else if (props.type === 'PER') {
+    // highest PER ever is ~32 by WILT
     return `${props[target]['PER'] * 3}%`;
   } else if (props.type === 'WS') {
+    // highest WS is by Kareem at with 25
     return `${props[target]['WS'] * 4}%`;
   }
 };

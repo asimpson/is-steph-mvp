@@ -66,13 +66,24 @@ export default class App extends Component {
         y2={x === 0 ? maxScaled : maxScaled - x * segmentScale}
       />
     );
+    const smallSize = {
+      fontSize: '16px',
+    };
+
     const textHeaderStyles = {
-      color: '#0068B8',
+      color: 'black',
       fontWeight: '700',
       fontSize: '24px',
       lineHeight: '1',
       margin: '0',
-      marginBottom: '0.5rem',
+      marginBottom: '1.5rem',
+    };
+
+    const rectStyles = {
+      background: '#FFBA00',
+      padding: '1.2rem 1rem',
+      margin: '1rem',
+      borderRadius: '15px',
     };
     return (
       <Fragment>
@@ -112,19 +123,32 @@ export default class App extends Component {
           </svg>
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <div>
-            <p style={textHeaderStyles}>TS (True shooting percentage)</p>
+        <div
+          className="flex-container"
+          style={{
+            justifyContent: 'space-between',
+            maxWidth: '1200px',
+            margin: '1em auto',
+          }}
+        >
+          <div style={rectStyles}>
+            <p style={textHeaderStyles}>
+              TS <span style={smallSize}>(True shooting percentage)</span>
+            </p>
             <Bar ghost={ghostAvg} current={currentAvg} type="TS" />
           </div>
 
-          <div>
-            <p style={textHeaderStyles}>PER (Player Efficency Rating)</p>
+          <div style={rectStyles}>
+            <p style={textHeaderStyles}>
+              PER <span style={smallSize}>(Player Efficency Rating)</span>
+            </p>
             <Bar ghost={ghostAvg} current={currentAvg} type="PER" />
           </div>
 
-          <div>
-            <p style={textHeaderStyles}>WS (Win Shares)</p>
+          <div style={rectStyles}>
+            <p style={textHeaderStyles}>
+              WS <span style={smallSize}>(Win Shares)</span>
+            </p>
             <Bar ghost={ghostAvg} current={currentAvg} type="WS" />
           </div>
         </div>
