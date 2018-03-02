@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import colorMap from './colorMap';
 
 const determineWidth = (props, target) => {
   if (props.type === 'TS') {
@@ -41,27 +42,27 @@ const Bar = props => {
     : props.current[props.type];
 
   return (
-    <svg height="120" width="100%" version="1.1">
+    <svg height="140" width="100%" version="1.1">
       <rect
         fill="#0068B8"
         x="0"
         y="10"
         width={determineWidth(props, 'ghost')}
-        height="32"
-        rx="16"
+        height="42"
+        rx="20"
       />
-      <text x="10" y="32" fill="#FAAA00">
+      <text x="10" y="36" fill="#FAAA00">
         {returnStat(ghost, props.type)}
       </text>
       <rect
-        fill="#FFFFFF"
+        fill={colorMap[props.selected]}
         x="0"
-        y="50"
+        y="60"
         width={determineWidth(props, 'current')}
-        height="32"
-        rx="16"
+        height="42"
+        rx="20"
       />
-      <text x="10" y="72" fill="#FAAA00">
+      <text x="10" y="86" fill="#FAAA00">
         {returnStat(current, props.type)}
       </text>
       <line strokeWidth="2" stroke="white" x1="2" x2="100%" y1="82%" y2="82%" />

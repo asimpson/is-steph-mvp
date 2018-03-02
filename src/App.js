@@ -25,6 +25,7 @@ export default class App extends Component {
       scrolled: 0,
       ghost: this.props.ghost,
       challenger: this.props.current,
+      selected: 'steph',
     };
   }
 
@@ -59,15 +60,17 @@ export default class App extends Component {
   }
 
   challenge(e) {
+    const selection = e.target.value;
     const data = {
       harden: 'https://s3.amazonaws.com/mvp-demo/data/harden.json',
       steph: 'https://s3.amazonaws.com/mvp-demo/data/steph.json',
       davis: 'https://s3.amazonaws.com/mvp-demo/data/davis.json',
     };
-    request(data[e.target.value]).then(x => {
+    request(data[selection]).then(x => {
       this.setState(prevState => {
         return {
           challenger: x,
+          selected: selection,
         };
       });
     });
@@ -130,7 +133,11 @@ export default class App extends Component {
     };
     return (
       <Fragment>
-        <Controls challenge={this.challenge} selection={this.selection} />
+        <Controls
+          selected={this.state.selected}
+          challenge={this.challenge}
+          selection={this.selection}
+        />
         <div
           ref={ref => (this.scrollable = ref)}
           style={{
@@ -160,6 +167,7 @@ export default class App extends Component {
               type={this.state.graphType}
               data={this.state.ghost.perGame}
               ghost={true}
+              selected={'ghost'}
             />
             <Graph
               animationDone={this.state.animationDone}
@@ -167,6 +175,7 @@ export default class App extends Component {
               type={this.state.graphType}
               data={this.state.challenger.perGame}
               ghost={false}
+              selected={this.state.selected}
             />
           </svg>
         </div>
@@ -186,6 +195,7 @@ export default class App extends Component {
             <Bar
               ghost={this.state.ghost.avgs}
               current={this.state.challenger.avgs}
+              selected={this.state.selected}
               type="TS"
             />
           </div>
@@ -197,6 +207,7 @@ export default class App extends Component {
             <Bar
               ghost={this.state.ghost.avgs}
               current={this.state.challenger.avgs}
+              selected={this.state.selected}
               type="PER"
             />
           </div>
@@ -208,6 +219,7 @@ export default class App extends Component {
             <Bar
               ghost={this.state.ghost.avgs}
               current={this.state.challenger.avgs}
+              selected={this.state.selected}
               type="WS"
             />
           </div>

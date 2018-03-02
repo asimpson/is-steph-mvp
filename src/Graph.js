@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react';
+import colorMap from './colorMap';
 
 class Graph extends Component {
   constructor(props) {
@@ -67,7 +68,7 @@ class Graph extends Component {
     return (
       <Fragment>
         <path
-          stroke={this.props.ghost ? '#0068B8' : '#FFFFFF'}
+          stroke={colorMap[this.props.selected]}
           fill="none"
           ref={ref => (this.path = ref)}
           strokeWidth="10"
