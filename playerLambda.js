@@ -5,20 +5,29 @@ const aws = require('aws-sdk');
 
 const s3 = new aws.S3({ region: 'us-east-1' });
 
+const playerMap = {
+  steph: 'c/curryst01',
+  harden: 'h/hardeja01',
+  davis: 'd/davisan02',
+};
+
 const playerLambda = (event, context, callback) => {
-  const playerMap = {
-    steph: 'curryst01',
-    harden: 'hardeja01',
-    davis: 'davisan02',
-  };
-  const url = `https://www.basketball-reference.com/players/c/${playerMap[
+  const gameLog = `https://www.basketball-reference.com/players/${playerMap[
     event.player
   ]}/gamelog/2018`;
 
-  perGame(url).then(x => {
+  const avg = `https://www.basketball-reference.com/players/${playerMap[
+    event.player
+  ]}.html`;
+
+  Promise.all([perGame(gameLog), currentAvgs(avg)]).then(x => {
+    const data = {
+      perGame: x[0],
+      avgs: x[1],
+    };
     const params = {
       Bucket: process.env.bucket,
-      Body: x,
+      Body: JSON.stringify(data),
       ACL: 'public-read',
       ContentType: 'application/json',
       Key: `data/${event.player}.json`,
@@ -60,9 +69,38 @@ function perGame(url) {
             : $("[data-stat='trb']", e).text(),
         };
       });
-      resolve(JSON.stringify(games));
+      resolve(games);
     });
   });
 }
+
+const currentAvgs = url =>
+  new Promise((resolve, reject) => {
+    let advanced;
+    request(url).then(html => {
+      const parser = new htmlparser.Parser(
+        {
+          oncomment: function(data) {
+            const $ = cheerio.load(data);
+            if ($('#div_advanced').length) {
+              advanced = data;
+            }
+          },
+        },
+        { decodeEntities: true }
+      );
+      parser.write(html);
+      parser.end();
+      const $ = cheerio.load(advanced);
+      const PER = $('tbody [data-stat="per"]').last().text();
+      const TS = $('tbody [data-stat="ts_pct"]').last().text();
+      const WS = $('tbody [data-stat="ws_per_48"]').last().text();
+      resolve({
+        PER,
+        TS,
+        WS,
+      });
+    });
+  });
 
 exports.handler = playerLambda;

@@ -20,6 +20,12 @@ class Graph extends Component {
     window.setTimeout(this.fadeIn, 300);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.animationDone !== nextProps.animationDone) {
+      this.path.style.strokeDasharray = 'none';
+    }
+  }
+
   fadeIn() {
     this.setState((prevState, props) => {
       this.path.style.strokeDashoffset = '0';

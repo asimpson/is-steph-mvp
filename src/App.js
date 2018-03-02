@@ -1,11 +1,14 @@
 import React, { Fragment, Component } from 'react';
+const axios = require('axios');
 
 import Graph from './Graph';
 import Bar from './Bar';
 import Controls from './Controls';
-import ghost from './ghost';
-import current from './current';
-import { ghostAvg, currentAvg } from './avg';
+
+const request = url =>
+  new Promise((resolve, reject) =>
+    axios.get(url).then(res => resolve(res.data))
+  );
 
 export default class App extends Component {
   constructor(props) {
@@ -18,8 +21,10 @@ export default class App extends Component {
     this.state = {
       graphType: 'points',
       animateStyles: {},
+      animationDone: false,
       scrolled: 0,
-      challenge: 'current',
+      ghost: this.props.ghost,
+      challenger: this.props.current,
     };
   }
 
@@ -28,6 +33,7 @@ export default class App extends Component {
       if (e.target === this.graphSvg && e.propertyName === 'transform') {
         this.setState(() => {
           return {
+            animationDone: true,
             animateStyles: {
               transition: 'unset',
               transform: 'unset',
@@ -40,7 +46,9 @@ export default class App extends Component {
 
   componentDidMount() {
     const currentDistance =
-      current.map(x => x.points).filter(x => x !== 'NA').length * 40 -
+      this.state.challenger.perGame.map(x => x.points).filter(x => x !== 'NA')
+        .length *
+        40 -
       document.body.getBoundingClientRect().width / 2;
     window.setTimeout(this.triggerAnimation, 300, currentDistance);
     this.tearDownAfterAnimation(currentDistance);
@@ -51,7 +59,18 @@ export default class App extends Component {
   }
 
   challenge(e) {
-    this.setState({ challenger: e.target.value });
+    const data = {
+      harden: 'https://s3.amazonaws.com/mvp-demo/data/harden.json',
+      steph: 'https://s3.amazonaws.com/mvp-demo/data/steph.json',
+      davis: 'https://s3.amazonaws.com/mvp-demo/data/davis.json',
+    };
+    request(data[e.target.value]).then(x => {
+      this.setState(prevState => {
+        return {
+          challenger: x,
+        };
+      });
+    });
   }
 
   triggerAnimation(distance) {
@@ -68,8 +87,8 @@ export default class App extends Component {
     const width = 82 * 40;
     const max =
       Math.max(
-        ...ghost
-          .concat(current)
+        ...this.state.ghost.perGame
+          .concat(this.state.challenger.perGame)
           .map(x => x[this.state.graphType])
           .filter(x => x !== 'NA')
       ) + 10;
@@ -136,15 +155,17 @@ export default class App extends Component {
               y2={maxScaled}
             />
             <Graph
+              animationDone={this.state.animationDone}
               max={maxScaled}
               type={this.state.graphType}
-              data={ghost}
+              data={this.state.ghost.perGame}
               ghost={true}
             />
             <Graph
+              animationDone={this.state.animationDone}
               max={maxScaled}
               type={this.state.graphType}
-              data={current}
+              data={this.state.challenger.perGame}
               ghost={false}
             />
           </svg>
@@ -162,21 +183,33 @@ export default class App extends Component {
             <p style={textHeaderStyles}>
               TS <span style={smallSize}>(True shooting percentage)</span>
             </p>
-            <Bar ghost={ghostAvg} current={currentAvg} type="TS" />
+            <Bar
+              ghost={this.state.ghost.avgs}
+              current={this.state.challenger.avgs}
+              type="TS"
+            />
           </div>
 
           <div style={rectStyles}>
             <p style={textHeaderStyles}>
               PER <span style={smallSize}>(Player Efficency Rating)</span>
             </p>
-            <Bar ghost={ghostAvg} current={currentAvg} type="PER" />
+            <Bar
+              ghost={this.state.ghost.avgs}
+              current={this.state.challenger.avgs}
+              type="PER"
+            />
           </div>
 
           <div style={rectStyles}>
             <p style={textHeaderStyles}>
               WS <span style={smallSize}>(Win Shares)</span>
             </p>
-            <Bar ghost={ghostAvg} current={currentAvg} type="WS" />
+            <Bar
+              ghost={this.state.ghost.avgs}
+              current={this.state.challenger.avgs}
+              type="WS"
+            />
           </div>
         </div>
       </Fragment>

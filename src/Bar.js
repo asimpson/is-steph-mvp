@@ -8,8 +8,8 @@ const determineWidth = (props, target) => {
     // highest PER ever is ~32 by WILT
     return `${props[target]['PER'] * 3}%`;
   } else if (props.type === 'WS') {
-    // highest WS is by Kareem at with 25
-    return `${props[target]['WS'] * 4}%`;
+    // highest WS is by Kareem at with .339
+    return `${props[target]['WS'] / 0.339 * 100}%`;
   }
 };
 
@@ -23,6 +23,15 @@ const returnUnit = props => {
   }
 };
 
+const returnStat = (stat, type) => {
+  const rules = {
+    TS: `${parseFloat(stat).toFixed(2)}%`,
+    PER: parseFloat(stat).toFixed(2),
+    WS: stat,
+  };
+  return rules[type];
+};
+
 const Bar = props => {
   const ghost = props.type === 'TS'
     ? props.ghost[props.type] * 100
@@ -30,7 +39,7 @@ const Bar = props => {
   const current = props.type === 'TS'
     ? props.current[props.type] * 100
     : props.current[props.type];
-  const max = ghost > current ? Math.round(ghost) : Math.round(current);
+
   return (
     <svg height="120" width="100%" version="1.1">
       <rect
@@ -42,7 +51,7 @@ const Bar = props => {
         rx="16"
       />
       <text x="10" y="32" fill="#FAAA00">
-        {parseFloat(ghost).toFixed(2)}
+        {returnStat(ghost, props.type)}
       </text>
       <rect
         fill="#FFFFFF"
@@ -53,7 +62,7 @@ const Bar = props => {
         rx="16"
       />
       <text x="10" y="72" fill="#FAAA00">
-        {parseFloat(current).toFixed(2)}
+        {returnStat(current, props.type)}
       </text>
       <line strokeWidth="2" stroke="white" x1="2" x2="100%" y1="82%" y2="82%" />
       <text x="90%" y="100%" fill="white">

@@ -6,6 +6,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "cheerio": "^1.0.0-rc.2",
+    "htmlparser": "^1.7.7",
     "htmlparser2": "^3.9.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
@@ -25,7 +26,8 @@
   },
   "babel": {
     "presets": [
-      "env", "react"
+      "env",
+      "react"
     ]
   },
   "keywords": [],
