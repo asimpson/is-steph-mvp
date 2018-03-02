@@ -15,23 +15,13 @@ const Controls = props => {
       </div>
       <div style={{ display: 'flex' }}>
         <img
-          style={{
-            borderRadius: '999em',
-            width: 'auto',
-            height: '60px',
-            marginRight: '1rem',
-            border: '6px solid #014C86',
-          }}
+          style={{ border: `6px solid ${colorMap.ghost}` }}
+          className="player"
           src="./assets/steph.png"
         />
         <img
-          style={{
-            borderRadius: '999em',
-            width: 'auto',
-            height: '60px',
-            marginRight: '1rem',
-            border: `6px solid ${colorMap[props.selected]}`,
-          }}
+          style={{ border: `6px solid ${colorMap[props.selected]}` }}
+          className="player"
           src={`./assets/${props.selected}.png`}
         />
         <Select changed={props.challenge}>

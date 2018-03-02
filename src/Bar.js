@@ -44,7 +44,7 @@ const Bar = props => {
   return (
     <svg height="140" width="100%" version="1.1">
       <rect
-        fill="#0068B8"
+        fill={colorMap.ghost}
         x="0"
         y="10"
         width={determineWidth(props, 'ghost')}

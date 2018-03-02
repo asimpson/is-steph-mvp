@@ -40,3 +40,14 @@ body {
 .tooltip {
   display: none;
 }
+
+.tooltip-show {
+  display: block;
+}
+
+.player {
+  border-radius: 999em;
+  width: 60px;
+  height: 60px;
+  margin-right: 1rem;
+}

@@ -1,4 +1,6 @@
 import React, { Fragment, Component } from 'react';
+import classnames from 'classnames';
+
 import colorMap from './colorMap';
 
 class Graph extends Component {
@@ -8,6 +10,7 @@ class Graph extends Component {
     this.state = {
       styles: {
         opacity: '0',
+        show: '',
       },
     };
     this.fadeIn = this.fadeIn.bind(this);
@@ -44,6 +47,14 @@ class Graph extends Component {
     // y axis is "px from the top". so it works backwards.
     // we need to do heigth - points to get our point.
 
+    const opponents = this.props.data
+      .filter(x => x['points'] !== 'NA')
+      .map(x => x['opp']);
+
+    const stat = this.props.data
+      .map(x => x[this.props.type])
+      .filter(x => x !== 'NA');
+
     const data = this.props.data
       .map(x => x[this.props.type])
       .filter(x => x !== 'NA')
@@ -54,15 +65,37 @@ class Graph extends Component {
             : `${40 * i + 10},${this.props.max - x * VERTSCALE}`
       );
 
+    const opp = (i, x, y) => {
+      const tooltipClass = classnames('tooltip', {
+        'tooltip-show': this.state.show === i,
+      });
+      const key = `opp-${i}`;
+      if (!this.props.ghost) {
+        return (
+          <foreignObject key={key} x={x} y={y} width="80" height="100">
+            <div className={tooltipClass} xmlns="http://www.w3.org/1999/xhtml">
+              <p>{stat[i]}</p>
+              <p>{opponents[i]}</p>
+            </div>
+          </foreignObject>
+        );
+      }
+      return null;
+    };
+
     const circles = data.map((x, i) =>
-      <circle
-        key={i}
-        style={this.state.styles}
-        fill={this.props.ghost ? '#014C86' : '#FFE09A'}
-        cx={x.split(',')[0]}
-        cy={x.split(',')[1]}
-        r="4"
-      />
+      <Fragment key={i}>
+        <circle
+          style={this.state.styles}
+          onClick={() => this.setState({ show: i })}
+          onMouseOver={() => this.setState({ show: i })}
+          fill={this.props.ghost ? '#014C86' : '#FFE09A'}
+          cx={x.split(',')[0]}
+          cy={x.split(',')[1]}
+          r="4"
+        />
+        {opp(i, x.split(',')[0], x.split(',')[1])}
+      </Fragment>
     );
 
     return (
