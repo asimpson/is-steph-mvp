@@ -14,13 +14,13 @@ class Graph extends Component {
       },
     };
     this.fadeIn = this.fadeIn.bind(this);
+    this.showTooltip = this.showTooltip.bind(this);
   }
 
   componentDidMount() {
     const length = this.path.getTotalLength();
     this.path.style.strokeDasharray = `${length} ${length}`;
     this.path.style.strokeDashoffset = length;
-    this.path.style.transition = 'stroke-dashoffset 3s ease-in-out';
     window.setTimeout(this.fadeIn, 300);
   }
 
@@ -30,8 +30,13 @@ class Graph extends Component {
     }
   }
 
+  showTooltip(i) {
+    this.setState({ show: i });
+  }
+
   fadeIn() {
     this.setState((prevState, props) => {
+      this.path.style.transition = 'stroke-dashoffset 3s ease-in-out';
       this.path.style.strokeDashoffset = '0';
       return {
         styles: {
@@ -72,10 +77,10 @@ class Graph extends Component {
       const key = `opp-${i}`;
       if (!this.props.ghost) {
         return (
-          <foreignObject key={key} x={x} y={y} width="80" height="100">
+          <foreignObject key={key} x={x} y={y} width="130" height="100">
             <div className={tooltipClass} xmlns="http://www.w3.org/1999/xhtml">
               <p>{stat[i]}</p>
-              <p>{opponents[i]}</p>
+              <p>vs {opponents[i]}</p>
             </div>
           </foreignObject>
         );
@@ -83,19 +88,28 @@ class Graph extends Component {
       return null;
     };
 
+    const tooltips = data.map((x, i) => {
+      return (
+        <Fragment key={i}>
+          {opp(i, x.split(',')[0], x.split(',')[1])}
+        </Fragment>
+      );
+    });
+
     const circles = data.map((x, i) =>
-      <Fragment key={i}>
-        <circle
-          style={this.state.styles}
-          onClick={() => this.setState({ show: i })}
-          onMouseOver={() => this.setState({ show: i })}
-          fill={this.props.ghost ? '#014C86' : '#FFE09A'}
-          cx={x.split(',')[0]}
-          cy={x.split(',')[1]}
-          r="4"
-        />
-        {opp(i, x.split(',')[0], x.split(',')[1])}
-      </Fragment>
+      <circle
+        style={this.state.styles}
+        key={i}
+        stroke="red"
+        strokeOpacity="0"
+        strokeWidth="30"
+        onClick={this.props.ghost ? null : this.showTooltip.bind(this, i)}
+        onMouseEnter={this.props.ghost ? null : this.showTooltip.bind(this, i)}
+        fill={this.props.ghost ? '#014C86' : '#FFE09A'}
+        cx={x.split(',')[0]}
+        cy={x.split(',')[1]}
+        r="4"
+      />
     );
 
     return (
@@ -110,6 +124,7 @@ class Graph extends Component {
           d={`M${data.join(' ')}`}
         />
         {circles}
+        {tooltips}
       </Fragment>
     );
   }

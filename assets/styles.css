@@ -39,6 +39,17 @@ body {
 
 .tooltip {
   display: none;
+  background: white;
+  border-radius: 15px;
+  font-size: 19px;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.tooltip p {
+  margin: 0.3rem 0 0.3rem 0;
+  color: black;
 }
 
 .tooltip-show {
