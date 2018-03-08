@@ -44,29 +44,44 @@ const Bar = props => {
   return (
     <svg height="140" width="100%" version="1.1">
       <rect
-        fill={colorMap.ghost}
+        fill={colorMap[props.selected].rectempty}
+        x="0"
+        y="10"
+        width="100%"
+        height="42"
+        rx="20"
+      />
+      <rect
+        fill={colorMap['ghost'].rect}
         x="0"
         y="10"
         width={determineWidth(props, 'ghost')}
         height="42"
         rx="20"
       />
-      <text x="10" y="36" fill="#FAAA00">
+      <text x="10" y="36" fill={colorMap[props.selected].shapetext}>
         {returnStat(ghost, props.type)}
       </text>
       <rect
-        fill={colorMap[props.selected]}
+        fill={colorMap[props.selected].rectempty}
+        x="0"
+        y="60"
+        width="100%"
+        height="42"
+        rx="20"
+      />
+      <rect
+        fill={colorMap[props.selected].rect}
         x="0"
         y="60"
         width={determineWidth(props, 'current')}
         height="42"
         rx="20"
       />
-      <text x="10" y="86" fill="#FAAA00">
+      <text x="10" y="86" fill={colorMap[props.selected].shapetext}>
         {returnStat(current, props.type)}
       </text>
-      <line strokeWidth="2" stroke="white" x1="2" x2="100%" y1="82%" y2="82%" />
-      <text x="90%" y="100%" fill="white">
+      <text x="88%" y="100%" fill="white">
         {returnUnit(props)}
       </text>
     </svg>

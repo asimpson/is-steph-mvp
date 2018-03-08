@@ -73,7 +73,6 @@ body {
 
 h1{
   font-size: 3em;
-  color: #0669B5;
   margin: 0;
   letter-spacing: -.04em;
 }
@@ -82,6 +81,29 @@ h2 {
   font-size: 1.2em;
   color: white;
   font-weight: normal;
-  text-shadow: 2px 2px 12px #FF9A00;
+  /* text-shadow: 2px 2px 12px #FF9A00; */
   line-height: 1.4em;
+}
+
+footer {
+  margin: 1rem 0;
+  text-transform: uppercase;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer p:after {
+  content: "|";
+  margin-left: 1rem;
+  display: inline-block;
+}
+
+footer p:last-child:after {
+  display: none;
+}
+
+footer p {
+  margin: 0 0.5rem;
 }

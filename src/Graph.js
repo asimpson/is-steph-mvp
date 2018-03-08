@@ -105,7 +105,7 @@ class Graph extends Component {
         strokeWidth="30"
         onClick={this.props.ghost ? null : this.showTooltip.bind(this, i)}
         onMouseEnter={this.props.ghost ? null : this.showTooltip.bind(this, i)}
-        fill={this.props.ghost ? '#014C86' : '#FFE09A'}
+        fill={colorMap[this.props.selected].circle}
         cx={x.split(',')[0]}
         cy={x.split(',')[1]}
         r="4"
@@ -133,7 +133,7 @@ class Graph extends Component {
     return (
       <Fragment>
         <path
-          stroke={colorMap[this.props.selected]}
+          stroke={colorMap[this.props.selected].line}
           fill="none"
           ref={ref => (this.path = ref)}
           strokeWidth="10"

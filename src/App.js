@@ -4,6 +4,7 @@ const axios = require('axios');
 import Graph from './Graph';
 import Bar from './Bar';
 import Controls from './Controls';
+import colorMap from './colorMap';
 
 const request = url =>
   new Promise((resolve, reject) =>
@@ -61,6 +62,7 @@ export default class App extends Component {
 
   challenge(e) {
     const selection = e.target.value;
+    document.querySelector('body').style.background = colorMap[selection].bg;
     const data = {
       harden: 'https://s3.amazonaws.com/mvp-demo/data/harden.json',
       steph: 'https://s3.amazonaws.com/mvp-demo/data/steph.json',
@@ -117,7 +119,7 @@ export default class App extends Component {
     };
 
     const textHeaderStyles = {
-      color: 'black',
+      color: colorMap[this.state.selected].recttext,
       fontWeight: '700',
       fontSize: '24px',
       lineHeight: '1',
@@ -126,13 +128,26 @@ export default class App extends Component {
     };
 
     const rectStyles = {
-      background: '#FFBA00',
+      background: colorMap[this.state.selected].rectbg,
       padding: '1.2rem 1rem',
       margin: '1rem',
       borderRadius: '15px',
     };
     return (
       <Fragment>
+        <div className="title-text">
+          <h1 style={{ color: colorMap[this.state.selected].recttext }}>
+            Is{' '}
+            {`${this.state.selected
+              .charAt(0)
+              .toUpperCase()}${this.state.selected.slice(1)}`}{' '}
+            MVP?
+          </h1>
+          <h2>
+            A comparison of Steph Curry's 2015-16 unanimous MVP season with his
+            current 2017-18 stats.
+          </h2>
+        </div>
         <Controls
           selected={this.state.selected}
           challenge={this.challenge}
@@ -226,6 +241,16 @@ export default class App extends Component {
             />
           </div>
         </div>
+        <footer>
+          <p>An Adam Simpson/Jeremy Loyd joint</p>
+          <p>
+            Stats from{' '}
+            <a href="https://basketball-reference.com/">
+              basketball-reference.com
+            </a>
+          </p>
+          <p>About this project</p>
+        </footer>
       </Fragment>
     );
   }
