@@ -95,10 +95,19 @@ const currentAvgs = url =>
       const PER = $('tbody [data-stat="per"]').last().text();
       const TS = $('tbody [data-stat="ts_pct"]').last().text();
       const WS = $('tbody [data-stat="ws_per_48"]').last().text();
+
+      const reg$ = cheerio.load(html);
+      const PTS = reg$('#per_game\\.2018 [data-stat=pts_per_g]').text();
+      const AST = reg$('#per_game\\.2018 [data-stat=ast_per_g]').text();
+      const RBD = reg$('#per_game\\.2018 [data-stat=trb_per_g]').text();
+
       resolve({
         PER,
         TS,
         WS,
+        points: PTS,
+        assists: AST,
+        rebounds: RBD,
       });
     });
   });

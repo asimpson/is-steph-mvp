@@ -112,6 +112,24 @@ class Graph extends Component {
       />
     );
 
+    const avg = () => {
+      if (!this.props.ghost) {
+        const [x, y] = data[data.length - 1].split(',');
+        const tooltipClass = classnames('tooltip', {
+          'tooltip-show': this.props.animationDone,
+        });
+        return (
+          <foreignObject x={x} y={y - 50} width="130" height="100">
+            <div className={tooltipClass} xmlns="http://www.w3.org/1999/xhtml">
+              <p>{this.props.avg[this.props.type]}</p>
+            </div>
+          </foreignObject>
+        );
+      }
+
+      return null;
+    };
+
     return (
       <Fragment>
         <path
@@ -125,6 +143,7 @@ class Graph extends Component {
         />
         {circles}
         {tooltips}
+        {avg()}
       </Fragment>
     );
   }

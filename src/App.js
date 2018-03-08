@@ -166,6 +166,7 @@ export default class App extends Component {
               max={maxScaled}
               type={this.state.graphType}
               data={this.state.ghost.perGame}
+              avg={this.state.ghost.avgs}
               ghost={true}
               selected={'ghost'}
             />
@@ -174,6 +175,7 @@ export default class App extends Component {
               max={maxScaled}
               type={this.state.graphType}
               data={this.state.challenger.perGame}
+              avg={this.state.challenger.avgs}
               ghost={false}
               selected={this.state.selected}
             />
