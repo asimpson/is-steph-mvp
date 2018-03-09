@@ -17,26 +17,7 @@ body {
   display: block;
 }
 
-@media(min-width: 48em) {
-  .flex-container {
-    display: flex;
-  }
-  .player-select--wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .player-select {
-    margin: 0;
-  }
-
-  .challengers {
-    display: flex;
-  }
-}
-
-.player-select--wrapper {
+.player-select--wrapper, .max-width {
   margin: 1rem auto;
   max-width: 1200px;
 }
@@ -111,4 +92,56 @@ footer p:last-child:after {
 
 footer p {
   margin: 0 0.5rem;
+}
+
+.stat {
+  background-image: url(/assets/chevron.svg);
+  background-repeat: no-repeat;
+  background-position: 93% center;
+  border: 5px solid #eaebed !important;
+  width: 100%;
+}
+
+.players-select, .players-select__ghost {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+@media(min-width: 25rem) {
+  .stat {
+    width: 330px;
+    font-size: 24px !important;
+  }
+}
+
+@media(min-width: 33.75rem) {
+  .challengers {
+    display: flex;
+  }
+}
+
+@media(min-width: 48em) {
+  .flex-container {
+    display: flex;
+  }
+  .player-select--wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .player-select {
+    margin: 0;
+  }
+
+  .players-select, .players-select__ghost {
+    width: 215px;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 76rem) {
+  .title-text{
+    margin: 4.5vw auto;
+  }
 }

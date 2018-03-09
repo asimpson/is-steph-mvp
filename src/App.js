@@ -139,7 +139,7 @@ export default class App extends Component {
     };
     return (
       <Fragment>
-        <div className="title-text">
+        <div className="title-text max-width">
           <h1 style={{ color: colorMap[this.state.selected].recttext }}>
             Is{' '}
             {`${this.state.selected

@@ -25,12 +25,20 @@ const Select = props => {
     padding: '1rem',
     appearance: 'none',
     boxShadow: '8px 8px 16px 0 rgba(0,0,0,0.06)',
+    color: props.selected
+      ? colorMap[props.selected].line
+      : colorMap[props.player].line,
   };
 
   const styles = props.selected ? Object.assign(style, imageSelect) : style;
 
   return (
-    <select style={styles} onChange={props.changed} name="graph">
+    <select
+      className={props.className}
+      style={styles}
+      onChange={props.changed}
+      name="graph"
+    >
       {props.children}
     </select>
   );
