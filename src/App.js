@@ -5,6 +5,7 @@ import Graph from './Graph';
 import Bar from './Bar';
 import Controls from './Controls';
 import colorMap from './colorMap';
+import fireSound from './fireSound';
 
 const request = url =>
   new Promise((resolve, reject) =>
@@ -75,6 +76,9 @@ export default class App extends Component {
           selected: selection,
         };
       });
+      if (selection !== 'steph') {
+        fireSound();
+      }
     });
   }
 
