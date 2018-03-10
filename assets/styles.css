@@ -142,6 +142,16 @@ footer p {
     width: 215px;
     margin-top: 0;
   }
+
+  .paren-text {
+    display: none;
+  }
+}
+
+@media (min-width: 57.8125rem) {
+  .paren-text {
+    display: inline;
+  }
 }
 
 @media (min-width: 76rem) {

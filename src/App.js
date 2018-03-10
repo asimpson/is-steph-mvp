@@ -214,7 +214,10 @@ export default class App extends Component {
         >
           <div style={rectStyles}>
             <p style={textHeaderStyles}>
-              TS <span style={smallSize}>(True shooting percentage)</span>
+              TS{' '}
+              <span className="paren-text" style={smallSize}>
+                (True shooting percentage)
+              </span>
             </p>
             <Bar
               ghost={this.state.ghost.avgs}
@@ -226,7 +229,10 @@ export default class App extends Component {
 
           <div style={rectStyles}>
             <p style={textHeaderStyles}>
-              PER <span style={smallSize}>(Player Efficency Rating)</span>
+              PER{' '}
+              <span className="paren-text" style={smallSize}>
+                (Player Efficency Rating)
+              </span>
             </p>
             <Bar
               ghost={this.state.ghost.avgs}
@@ -238,7 +244,8 @@ export default class App extends Component {
 
           <div style={rectStyles}>
             <p style={textHeaderStyles}>
-              WS <span style={smallSize}>(Win Shares)</span>
+              WS{' '}
+              <span className="paren-text" style={smallSize}>(Win Shares)</span>
             </p>
             <Bar
               ghost={this.state.ghost.avgs}
