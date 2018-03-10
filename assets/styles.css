@@ -107,6 +107,10 @@ footer p {
   margin-top: 0.5rem;
 }
 
+.max-text a {
+  color: white;
+}
+
 @media(min-width: 25rem) {
   .stat {
     width: 330px;

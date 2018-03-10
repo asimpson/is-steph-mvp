@@ -169,7 +169,7 @@ export default class App extends Component {
         >
           <svg
             style={this.state.animateStyles}
-            height={max * VERTSCALE + 50}
+            height={max * VERTSCALE + 100}
             width={width}
             version="1.1"
             ref={ref => (this.graphSvg = ref)}
