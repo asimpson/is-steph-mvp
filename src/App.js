@@ -28,6 +28,7 @@ export default class App extends Component {
       ghost: this.props.ghost,
       challenger: this.props.current,
       selected: 'steph',
+      audioBuffer: null,
     };
   }
 
@@ -77,7 +78,9 @@ export default class App extends Component {
         };
       });
       if (selection !== 'steph') {
-        fireSound();
+        fireSound(this.state.audioBuffer, buf =>
+          this.setState({ audioBuffer: buf })
+        );
       }
     });
   }
