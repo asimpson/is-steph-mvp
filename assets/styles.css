@@ -18,6 +18,7 @@ body {
 }
 
 .player-select--wrapper, .max-width {
+  padding: 0 4.5vw 0 4.5vw;
   margin: 1rem auto;
   max-width: 1200px;
 }
@@ -58,7 +59,7 @@ body {
 }
 
 h1{
-  font-size: 3em;
+  font-size: 12vw;
   margin: 0;
   letter-spacing: -.04em;
 }
@@ -98,23 +99,34 @@ footer p {
   background-image: url(/assets/chevron.svg);
   background-repeat: no-repeat;
   background-position: 93% center;
-  border: 5px solid #eaebed !important;
+  border: 4px solid #eaebed !important;
   width: 100%;
+  margin-right: 1em;
+  margin-bottom: 0;
 }
 
 .players-select, .players-select__ghost {
   width: 100%;
   margin-top: 0.5rem;
+  min-height: 5em;
+  border-radius: 80px;
 }
 
 .max-text a {
   color: white;
 }
 
+.challengers {
+  margin: 0;
+}
+
 @media(min-width: 25rem) {
   .stat {
-    width: 330px;
     font-size: 24px !important;
+    height: 3.5em;
+  }
+  h1 {
+    font-size: 4em;
   }
 }
 
@@ -122,9 +134,18 @@ footer p {
   .challengers {
     display: flex;
   }
+
 }
 
 @media(min-width: 48em) {
+  .stat {
+      width: 330px;
+  }
+
+  h1 {
+    font-size: 5em;
+  }
+
   .flex-container {
     display: flex;
   }
