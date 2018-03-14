@@ -29,10 +29,10 @@ export default {
     line: '#0064be',
     circle: '#004889',
     rect: '#0064be',
-    rectbg: '#ffba00',
+    rectbg: '#ffc424',
     recttext: '#0062bf',
     shapetext: '#ffba00',
-    rectempty: '#ffc500',
+    rectempty: '#FEB62D',
     bg: '#ffb600',
   },
   davis: {

@@ -118,7 +118,7 @@ class Graph extends Component {
         fill={colorMap[this.props.selected].circle}
         cx={x.split(',')[0]}
         cy={x.split(',')[1]}
-        r="4"
+        r="3"
       />
     );
 
@@ -165,7 +165,7 @@ class Graph extends Component {
           stroke={colorMap[this.props.selected].line}
           fill="none"
           ref={ref => (this.path = ref)}
-          strokeWidth="10"
+          strokeWidth="8"
           strokeLinecap="round"
           strokeLinejoin="round"
           d={`M${data.join(' ')}`}

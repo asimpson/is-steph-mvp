@@ -151,8 +151,7 @@ export default class App extends Component {
             MVP?
           </h1>
           <h2>
-            A comparison of Steph Curry's 2015-16 unanimous MVP season with his
-            current 2017-18 stats.
+            A comparison of Steph Curry's unanimous MVP season with the current season's MVP contenders.
           </h2>
         </div>
         <Controls
