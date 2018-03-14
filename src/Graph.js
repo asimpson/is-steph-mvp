@@ -48,7 +48,6 @@ class Graph extends Component {
   }
 
   render() {
-    const VERTSCALE = 5;
     // y axis is "px from the top". so it works backwards.
     // we need to do heigth - points to get our point.
 
@@ -66,8 +65,8 @@ class Graph extends Component {
       .map(
         (x, i) =>
           i === 0
-            ? `10,${this.props.max - x * VERTSCALE}`
-            : `${40 * i + 10},${this.props.max - x * VERTSCALE}`
+            ? `10,${this.props.max - x * this.props.VERTSCALE}`
+            : `${40 * i + 10},${this.props.max - x * this.props.VERTSCALE}`
       );
 
     const opp = (i, x, y) => {

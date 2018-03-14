@@ -105,7 +105,7 @@ export default class App extends Component {
           .filter(x => x !== 'NA')
       ) + 10;
 
-    const VERTSCALE = 5;
+    const VERTSCALE = Math.ceil(300 / max);
     const maxScaled = max * VERTSCALE;
     const segmentScale = 10 * VERTSCALE;
     const segments = [
@@ -191,6 +191,7 @@ export default class App extends Component {
               avg={this.state.ghost.avgs}
               ghost={true}
               selected={'ghost'}
+              VERTSCALE={VERTSCALE}
             />
             <Graph
               animationDone={this.state.animationDone}
@@ -200,6 +201,7 @@ export default class App extends Component {
               avg={this.state.challenger.avgs}
               ghost={false}
               selected={this.state.selected}
+              VERTSCALE={VERTSCALE}
             />
           </svg>
         </div>
