@@ -15,6 +15,7 @@ class Graph extends Component {
     };
     this.fadeIn = this.fadeIn.bind(this);
     this.showTooltip = this.showTooltip.bind(this);
+    this.hideTooltip = this.hideTooltip.bind(this);
   }
 
   componentDidMount() {
@@ -31,7 +32,16 @@ class Graph extends Component {
   }
 
   showTooltip(i) {
-    this.setState({ show: i });
+    this.setState(prevState => {
+      if (prevState.show !== i) {
+        return { show: i };
+      }
+    });
+  }
+
+  hideTooltip(e, i) {
+    e.stopPropagation();
+    this.setState({ show: '' });
   }
 
   fadeIn() {
@@ -104,6 +114,7 @@ class Graph extends Component {
         strokeWidth="30"
         onClick={this.props.ghost ? null : this.showTooltip.bind(this, i)}
         onMouseEnter={this.props.ghost ? null : this.showTooltip.bind(this, i)}
+        onMouseLeave={this.props.ghost ? null : e => this.hideTooltip(e, i)}
         fill={colorMap[this.props.selected].circle}
         cx={x.split(',')[0]}
         cy={x.split(',')[1]}
@@ -113,9 +124,9 @@ class Graph extends Component {
 
     const avg = () => {
       const typeMap = {
-        points: 'PTS',
-        assists: 'AST',
-        rebounds: 'TRB',
+        points: 'PPG',
+        assists: 'APG',
+        rebounds: 'RPG',
       };
       if (!this.props.ghost) {
         const [x, y] = data[data.length - 1].split(',');
@@ -123,8 +134,21 @@ class Graph extends Component {
           'tooltip-show': this.props.animationDone,
         });
         return (
-          <foreignObject x={x} y={y - 100} width="130" height="100">
-            <div className={tooltipClass} xmlns="http://www.w3.org/1999/xhtml">
+          <foreignObject
+            x={x}
+            y={10 * this.props.VERTSCALE}
+            width="130"
+            height="100"
+          >
+            <div
+              style={{
+                color: colorMap[this.props.selected].line,
+                fontSize: '28px',
+                background: 'none',
+              }}
+              className={tooltipClass}
+              xmlns="http://www.w3.org/1999/xhtml"
+            >
               <p>{this.props.avg[this.props.type]}</p>
               <p>{typeMap[this.props.type]}</p>
             </div>
@@ -146,7 +170,7 @@ class Graph extends Component {
           strokeLinejoin="round"
           d={`M${data.join(' ')}`}
         />
-        {circles}
+        {this.props.ghost ? null : circles}
         {tooltips}
         {avg()}
       </Fragment>

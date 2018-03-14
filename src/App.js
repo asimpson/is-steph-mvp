@@ -114,7 +114,7 @@ export default class App extends Component {
       <line
         key={x}
         strokeWidth="1"
-        stroke="white"
+        stroke="rgba(255,255,255,.4)"
         x1="2"
         x2={width}
         y1={x === 0 ? maxScaled : maxScaled - x * segmentScale}
@@ -169,7 +169,7 @@ export default class App extends Component {
         >
           <svg
             style={this.state.animateStyles}
-            height={max * VERTSCALE + 100}
+            height={max * VERTSCALE + 73}
             width={width}
             version="1.1"
             ref={ref => (this.graphSvg = ref)}
@@ -177,7 +177,7 @@ export default class App extends Component {
             {segments}
             <line
               strokeWidth="1"
-              stroke="white"
+              stroke="rgba(255,255,255,.4)"
               x1="2"
               x2="2"
               y1="0"
@@ -211,7 +211,7 @@ export default class App extends Component {
           style={{
             justifyContent: 'space-between',
             maxWidth: '1200px',
-            margin: '1em auto',
+            margin: '0 auto',
           }}
         >
           <div style={rectStyles}>
