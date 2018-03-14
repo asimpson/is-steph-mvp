@@ -151,7 +151,8 @@ export default class App extends Component {
             MVP?
           </h1>
           <h2>
-            A comparison of Steph Curry's unanimous MVP season with the current season's MVP contenders.
+            A comparison of Steph Curry's unanimous MVP season with the current
+            season's MVP contenders.
           </h2>
         </div>
         <Controls
@@ -257,14 +258,17 @@ export default class App extends Component {
           </div>
         </div>
         <footer>
-          <p>An Adam Simpson/Jeremy Loyd joint</p>
+          <p>
+            An <a href="https://twitter.com/a_simpson">Adam Simpson</a> /{' '}
+            <a href="https://twitter.com/jeremyloyd">Jeremy Loyd</a>
+            <span> joint</span>
+          </p>
           <p>
             Stats from{' '}
             <a href="https://basketball-reference.com/">
               basketball-reference.com
             </a>
           </p>
-          <p>About this project</p>
         </footer>
       </Fragment>
     );

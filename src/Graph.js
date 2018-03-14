@@ -145,6 +145,7 @@ class Graph extends Component {
                 color: colorMap[this.props.selected].line,
                 fontSize: '28px',
                 background: 'none',
+                boxShadow: 'none',
               }}
               className={tooltipClass}
               xmlns="http://www.w3.org/1999/xhtml"

@@ -85,7 +85,7 @@ footer {
   text-align: center;
 
   color: white;
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: center;
 }
@@ -95,18 +95,12 @@ footer a {
   text-decoration: underline;
 }
 
-footer p:after {
-  content: "|";
-  margin-left: 1rem;
-  display: inline-block;
-}
-
 footer p:last-child:after {
   display: none;
 }
 
 footer p {
-  margin: 0 0.5rem;
+  margin: 1rem 0;
 }
 
 .stat {
@@ -191,5 +185,21 @@ footer p {
 @media (min-width: 76rem) {
   .title-text{
     margin: 4.5vw auto;
+  }
+}
+
+@media (min-width: 40rem) {
+  footer {
+    display: flex;
+  }
+
+  footer p {
+    margin: 0 0.5rem;
+  }
+
+  footer p:after {
+    content: "|";
+    margin-left: 1rem;
+    display: inline-block;
   }
 }
