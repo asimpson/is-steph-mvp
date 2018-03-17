@@ -9,39 +9,50 @@ const playerMap = {
   steph: {
     url: 'c/curryst01',
     displayName: 'Steph',
+    year: '2018',
   },
   harden: {
     url: 'h/hardeja01',
     displayName: 'Harden',
+    year: '2018',
   },
   davis: {
     url: 'd/davisan02',
     displayName: 'AD',
+    year: '2018',
   },
   lebron: {
     url: 'j/jamesle01',
     displayName: 'LeBron',
+    year: '2018',
   },
   dame: {
     url: 'l/lillada01',
     displayName: 'Dame',
+    year: '2018',
   },
   freak: {
     url: 'a/antetgi01',
     displayName: 'Giannis',
+    year: '2018',
+  },
+  ghost: {
+    url: 'c/curryst01',
+    displayName: 'Ghost',
+    year: '2016',
   },
 };
 
 const playerLambda = (event, context, callback) => {
   const gameLog = `https://www.basketball-reference.com/players/${playerMap[
     event.player
-  ].url}/gamelog/2018`;
+  ].url}/gamelog/${playerMap[event.player].year}`;
 
   const avg = `https://www.basketball-reference.com/players/${playerMap[
     event.player
   ].url}.html`;
 
-  Promise.all([perGame(gameLog), currentAvgs(avg)]).then(x => {
+  Promise.all([perGame(gameLog), currentAvgs(avg, event.player)]).then(x => {
     const data = {
       perGame: x[0],
       avgs: x[1],
@@ -96,7 +107,7 @@ function perGame(url) {
   });
 }
 
-const currentAvgs = url =>
+const currentAvgs = (url, player) =>
   new Promise((resolve, reject) => {
     let advanced;
     request(url).then(html => {
@@ -114,14 +125,26 @@ const currentAvgs = url =>
       parser.write(html);
       parser.end();
       const $ = cheerio.load(advanced);
-      const PER = $('tbody [data-stat="per"]').last().text();
-      const TS = $('tbody [data-stat="ts_pct"]').last().text();
-      const WS = $('tbody [data-stat="ws_per_48"]').last().text();
+      const PER = player === 'ghost'
+        ? $('#advanced\\.2016 [data-stat="per"]').text()
+        : $('tbody [data-stat="per"]').last().text();
+      const TS = player === 'ghost'
+        ? $('#advanced\\.2016 [data-stat="ts_pct"]').text()
+        : $('tbody [data-stat="ts_pct"]').last().text();
+      const WS = player === 'ghost'
+        ? $('#advanced\\.2016 [data-stat="ws_per_48"]').text()
+        : $('tbody [data-stat="ws_per_48"]').last().text();
 
       const reg$ = cheerio.load(html);
-      const PTS = reg$('#per_game\\.2018 [data-stat=pts_per_g]').text();
-      const AST = reg$('#per_game\\.2018 [data-stat=ast_per_g]').text();
-      const RBD = reg$('#per_game\\.2018 [data-stat=trb_per_g]').text();
+      const PTS = reg$(
+        `#per_game\\.${playerMap[player].year} [data-stat=pts_per_g]`
+      ).text();
+      const AST = reg$(
+        `#per_game\\.${playerMap[player].year} [data-stat=ast_per_g]`
+      ).text();
+      const RBD = reg$(
+        `#per_game\\.${playerMap[player].year} [data-stat=trb_per_g]`
+      ).text();
 
       resolve({
         PER,
