@@ -10,7 +10,7 @@ class Graph extends Component {
     this.state = {
       styles: {
         opacity: '0',
-        show: '',
+        show: -1,
       },
     };
     this.fadeIn = this.fadeIn.bind(this);
@@ -31,17 +31,19 @@ class Graph extends Component {
     }
   }
 
-  showTooltip(i) {
-    this.setState(prevState => {
-      if (prevState.show !== i) {
-        return { show: i };
-      }
-    });
+  showTooltip(i, e) {
+    if (this.state.show !== i) {
+      this.setState({
+        show: i,
+      });
+    }
   }
 
-  hideTooltip(e, i) {
+  hideTooltip(e) {
     e.stopPropagation();
-    this.setState({ show: '' });
+    if (e.relatedTarget.tagName !== 'DIV') {
+      this.setState({ show: -1 });
+    }
   }
 
   fadeIn() {
@@ -112,9 +114,9 @@ class Graph extends Component {
         stroke="red"
         strokeOpacity="0"
         strokeWidth="30"
-        onClick={this.props.ghost ? null : this.showTooltip.bind(this, i)}
-        onMouseEnter={this.props.ghost ? null : this.showTooltip.bind(this, i)}
-        onMouseLeave={this.props.ghost ? null : e => this.hideTooltip(e, i)}
+        onClick={() => this.showTooltip(i)}
+        onMouseEnter={e => this.showTooltip(i, e)}
+        onMouseLeave={e => this.hideTooltip(e)}
         fill={colorMap[this.props.selected].circle}
         cx={x.split(',')[0]}
         cy={x.split(',')[1]}
