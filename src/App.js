@@ -50,9 +50,7 @@ export default class App extends Component {
 
   componentDidMount() {
     const currentDistance =
-      this.state.challenger.perGame.map(x => x.points).filter(x => x !== 'NA')
-        .length *
-        40 -
+      this.state.challenger.perGame.map(x => x.points).length * 40 -
       document.body.getBoundingClientRect().width / 2;
     window.setTimeout(this.triggerAnimation, 300, currentDistance);
     this.tearDownAfterAnimation(currentDistance);
@@ -102,11 +100,10 @@ export default class App extends Component {
         ...this.state.ghost.perGame
           .concat(this.state.challenger.perGame)
           .map(x => x[this.state.graphType])
-          .filter(x => x !== 'NA')
       ) + 10;
 
-    const VERTSCALE = Math.ceil(300 / max);
-    const maxScaled = max * VERTSCALE;
+    const maxScaled = 300;
+    const VERTSCALE = Math.ceil(maxScaled / max);
     const segmentScale = 10 * VERTSCALE;
     const segments = [
       ...Array(Math.ceil(maxScaled / segmentScale)).keys(),
@@ -144,10 +141,10 @@ export default class App extends Component {
       <Fragment>
         <div className="title-text max-width">
           <h1 style={{ color: colorMap[this.state.selected].recttext }}>
-            Is{' '}
-            {`${this.state.selected
-              .charAt(0)
-              .toUpperCase()}${this.state.selected.slice(1)}`}{' '}
+            Is
+            <span>
+              {' '}{this.state.challenger.displayName}{' '}
+            </span>
             MVP?
           </h1>
           <h2>

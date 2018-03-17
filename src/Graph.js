@@ -63,17 +63,12 @@ class Graph extends Component {
     // y axis is "px from the top". so it works backwards.
     // we need to do heigth - points to get our point.
 
-    const opponents = this.props.data
-      .filter(x => x['points'] !== 'NA')
-      .map(x => x['opp']);
+    const opponents = this.props.data.map(x => x['opp']);
 
-    const stat = this.props.data
-      .map(x => x[this.props.type])
-      .filter(x => x !== 'NA');
+    const stat = this.props.data.map(x => x[this.props.type]);
 
     const data = this.props.data
       .map(x => x[this.props.type])
-      .filter(x => x !== 'NA')
       .map(
         (x, i) =>
           i === 0
