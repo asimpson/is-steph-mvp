@@ -67,6 +67,8 @@ export default class App extends Component {
       harden: 'https://s3.amazonaws.com/mvp-demo/data/harden.json',
       steph: 'https://s3.amazonaws.com/mvp-demo/data/steph.json',
       davis: 'https://s3.amazonaws.com/mvp-demo/data/davis.json',
+      dame: 'https://s3.amazonaws.com/mvp-demo/data/dame.json',
+      freak: 'https://s3.amazonaws.com/mvp-demo/data/freak.json',
     };
     request(data[selection]).then(x => {
       this.setState(prevState => {
@@ -102,7 +104,7 @@ export default class App extends Component {
           .map(x => x[this.state.graphType])
       ) + 10;
 
-    const maxScaled = 300;
+    const maxScaled = 310;
     const VERTSCALE = Math.ceil(maxScaled / max);
     const segmentScale = 10 * VERTSCALE;
     const segments = [

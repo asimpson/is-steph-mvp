@@ -143,6 +143,7 @@ class Graph extends Component {
                 fontSize: '28px',
                 background: 'none',
                 boxShadow: 'none',
+                zIndex: '1',
               }}
               className={tooltipClass}
               xmlns="http://www.w3.org/1999/xhtml"

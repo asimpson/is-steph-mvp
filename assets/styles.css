@@ -40,6 +40,8 @@ p {
   text-align: center;
   font-weight: 700;
   box-shadow: 5px 5px 15px #6969693b;
+  position: relative;
+  z-index: 2;
 }
 
 .tooltip p {
@@ -103,13 +105,15 @@ footer p {
   margin: 1rem 0;
 }
 
-.stat {
-  background-image: url(/assets/chevron.svg);
+.chevron {
   background-repeat: no-repeat;
   background-position: 93% center;
-  border: 4px solid #eaebed !important;
   width: 100%;
   margin-right: 1em;
+}
+
+.stat {
+  border: 4px solid #eaebed !important;
 }
 
 .players-select, .players-select__ghost {
@@ -138,17 +142,16 @@ footer p {
 }
 
 @media(min-width: 33.75rem) {
+  .stat {
+    width: 100%;
+  }
+
   .challengers {
     display: flex;
   }
-
 }
 
 @media(min-width: 48em) {
-  .stat {
-      width: 330px;
-  }
-
   h1 {
     font-size: 5em;
   }
@@ -156,23 +159,34 @@ footer p {
   .flex-container {
     display: flex;
   }
+
+  .paren-text {
+    display: none;
+  }
+}
+
+@media (min-width: 56.0625rem) {
+  .stat {
+      width: 330px;
+  }
+
   .player-select--wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .player-select {
+  .players-select {
     margin: 0;
+    width: auto;
+  }
+
+  .players-select__ghost {
+    width: 215px;
   }
 
   .players-select, .players-select__ghost {
-    width: 215px;
     margin-top: 0;
-  }
-
-  .paren-text {
-    display: none;
   }
 }
 

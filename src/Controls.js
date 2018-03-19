@@ -9,7 +9,7 @@ const Controls = props => {
       <div className="player-select">
         <Select
           player={props.selected}
-          className="stat"
+          className="stat chevron"
           changed={props.selection}
         >
           <option value="points">Points per game</option>
@@ -43,13 +43,15 @@ const Controls = props => {
           </div>
         </div>
         <Select
-          className="players-select"
+          className="chevron players-select"
           selected={props.selected}
           changed={props.challenge}
         >
           <option value="steph">Steph Curry</option>
           <option value="harden">James Harden</option>
           <option value="davis">Anthony Davis</option>
+          <option value="freak">Giannis Antetokounmpo</option>
+          <option value="dame">Damian Lillard</option>
         </Select>
       </div>
     </div>
