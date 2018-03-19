@@ -13,7 +13,8 @@ export default {
     recttext: '#ffbc00',
     shapetext: '#3a0016',
     rectempty: '#8b0048',
-    bg: '#870030',
+    bgFallback: '#880037',
+    bg: 'linear-gradient(-1deg, #340015 14%, #880037 96%)',
   },
   harden: {
     line: '#e80039',
@@ -23,7 +24,8 @@ export default {
     recttext: '#feffff',
     shapetext: '#000101',
     rectempty: '#414243',
-    bg: '#333435',
+    bgFallback: '#434343',
+    bg: 'linear-gradient(-1deg, #000000 17%, #434343 96%)',
   },
   freak: {
     line: '#eee1c7',
@@ -33,7 +35,8 @@ export default {
     recttext: '#000000',
     shapetext: '#000000',
     rectempty: '#216731',
-    bg: '#004610',
+    bgFallback: '#004711',
+    bg: 'linear-gradient(-1deg, #00400F 17%, #004711 93%)',
   },
   dame: {
     line: '#000000',
@@ -43,7 +46,8 @@ export default {
     recttext: '#000000',
     shapetext: '#bc2323',
     rectempty: '#a03333',
-    bg: '#bc2323',
+    bgFallback: '#BF2323',
+    bg: 'linear-gradient(-1deg, #A61B1B 16%, #BF2323 94%)',
   },
   steph: {
     line: '#0064be',
@@ -53,7 +57,8 @@ export default {
     recttext: '#0062bf',
     shapetext: '#ffba00',
     rectempty: '#FEB62D',
-    bg: '#ffb600',
+    bgFallback: '#FFBA00',
+    bg: 'linear-gradient(-1deg, #FAAA00 14%, #FFBA00 96%)',
   },
   davis: {
     line: '#b89c4a',
@@ -63,6 +68,7 @@ export default {
     recttext: '#b89c4a',
     shapetext: '#3a0a2e',
     rectempty: '#164375',
-    bg: '#00205a',
+    bgFallback: '#00295D',
+    bg: 'linear-gradient(-1deg, #01142C 14%, #00295D 93%)',
   },
 };

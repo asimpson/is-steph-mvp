@@ -62,7 +62,13 @@ export default class App extends Component {
 
   challenge(e) {
     const selection = e.target.value;
-    document.querySelector('body').style.background = colorMap[selection].bg;
+    document
+      .querySelector('body')
+      .setAttribute(
+        'style',
+        `background: ${colorMap[selection].bgFallback}; ${colorMap[selection]
+          .bg}`
+      );
     const data = {
       harden: 'https://s3.amazonaws.com/mvp-demo/data/harden.json',
       steph: 'https://s3.amazonaws.com/mvp-demo/data/steph.json',

@@ -5,12 +5,10 @@
 body {
   margin: 0;
   background: #ffba00; /* Old browsers */
-  background: -moz-linear-gradient(top, #ffba00 0%, #ffb600 99%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #ffba00 0%,#ffb600 99%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom, #ffba00 0%,#ffb600 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffba00', endColorstr='#ffb600',GradientType=0 ); /* IE6-9 */
   font-family: sans-serif;
   font-size: 16px;
+  height: 100vh;
 }
 
 p {
