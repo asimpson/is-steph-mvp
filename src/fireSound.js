@@ -4,6 +4,9 @@ const axios = require('axios');
 
 const ab2str = buf => String.fromCharCode.apply(null, new Uint16Array(buf));
 
+const baseAudioContext = new (window.AudioContext ||
+  window.webkitAudioContext)();
+
 const str2ab = str => {
   var buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
   var bufView = new Uint16Array(buf);
@@ -14,8 +17,6 @@ const str2ab = str => {
 };
 
 const fireSound = (buffer, cb) => {
-  const baseAudioContext = new (window.AudioContext ||
-    window.webkitAudioContext)();
   const source = baseAudioContext.createBufferSource();
 
   if (!buffer) {
