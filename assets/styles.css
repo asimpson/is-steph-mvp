@@ -4,11 +4,17 @@
 
 body {
   margin: 0;
-  background: #ffba00; /* Old browsers */
-  background: linear-gradient(to bottom, #ffba00 0%,#ffb600 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: #ffba00;
+  background: linear-gradient(to bottom, #ffba00 0%,#ffb600 99%);
   font-family: sans-serif;
   font-size: 16px;
   min-height: 100vh;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 p {
@@ -19,14 +25,14 @@ p {
   display: block;
 }
 
-.player-select--wrapper, .max-width {
-  padding: 0 4.5vw 0 4.5vw;
-  margin: 1rem auto;
-  max-width: 1200px;
+.player-select--wrapper {
+  overflow: hidden;
 }
 
-.player-select {
-  margin-bottom: 1rem;
+.player-select--wrapper, .max-width {
+  padding: 0 4.5vw 1rem 4.5vw;
+  margin: 1rem auto;
+  max-width: 1200px;
 }
 
 .tooltip {
@@ -75,19 +81,23 @@ h2 {
   line-height: 1.4em;
 }
 
-footer {
-  margin: 1.5rem 0;
+footer, .built {
+  margin: 1rem 0;
   padding: 1rem;
   line-height: 0.8rem;
   text-transform: uppercase;
   letter-spacing: .2em;
   font-size: 0.6rem;
   text-align: center;
-
   color: white;
   display: block;
   align-items: center;
   justify-content: center;
+}
+
+.built {
+  padding: 0;
+  margin: 0 auto 3rem auto;
 }
 
 footer a {
@@ -107,18 +117,30 @@ footer p {
   background-repeat: no-repeat;
   background-position: 93% center;
   width: 100%;
-  margin-right: 1em;
+  /* margin-right: 1em; */
 }
 
 .stat {
   border: 4px solid #eaebed !important;
+  border-radius: 100em;
 }
 
 .players-select, .players-select__ghost {
   width: 100%;
   margin-top: 0.5rem;
   min-height: 5em;
-  border-radius: 80px;
+  overflow: hidden;
+  border-radius: 100em;
+  background-clip: padding-box;
+}
+
+.players-select__ghost {
+  padding: 0.2rem;
+  padding-left: 80px;
+  background: url('/assets/steph.png');
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: 11px center;
 }
 
 .max-text a {
@@ -167,6 +189,22 @@ footer p {
   }
 }
 
+@media (min-width: 41.5em) {
+  footer {
+    display: flex;
+  }
+
+  footer p {
+    margin: 0 0.5rem;
+  }
+
+  footer p:after {
+    content: "|";
+    margin-left: 1rem;
+    display: inline-block;
+  }
+}
+
 @media(min-width: 48em) {
   h1 {
     font-size: 5em;
@@ -181,15 +219,22 @@ footer p {
   }
 }
 
-@media (min-width: 56.0625rem) {
-  .stat {
-      width: 330px;
+@media (min-width: 57.8125rem) {
+  .paren-text {
+    display: inline;
   }
+}
 
+@media (min-width: 60rem) {
   .player-select--wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .stat {
+      width: 330px;
+      margin-right: 1rem;
   }
 
   .players-select {
@@ -206,30 +251,8 @@ footer p {
   }
 }
 
-@media (min-width: 57.8125rem) {
-  .paren-text {
-    display: inline;
-  }
-}
-
 @media (min-width: 76rem) {
   .title-text{
     margin: 4.5vw auto;
-  }
-}
-
-@media (min-width: 40rem) {
-  footer {
-    display: flex;
-  }
-
-  footer p {
-    margin: 0 0.5rem;
-  }
-
-  footer p:after {
-    content: "|";
-    margin-left: 1rem;
-    display: inline-block;
   }
 }

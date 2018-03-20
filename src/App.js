@@ -212,7 +212,7 @@ export default class App extends Component {
         </div>
 
         <div
-          className="flex-container"
+          className="flex-container max-width"
           style={{
             justifyContent: 'space-between',
             maxWidth: '1200px',
@@ -294,7 +294,7 @@ export default class App extends Component {
             <a href="https://twitter.com/a_simpson">@a_simpson</a>
           </p>
         </div>
-        <footer>
+        <footer className="max-width">
           <p>
             An <a href="https://twitter.com/a_simpson">Adam Simpson</a> /{' '}
             <a href="https://twitter.com/jeremyloyd">Jeremy Loyd</a>
@@ -307,6 +307,10 @@ export default class App extends Component {
             </a>
           </p>
         </footer>
+
+        <div className="built">
+          <p>Data last updated at {this.state.challenger.date}</p>
+        </div>
       </Fragment>
     );
   }

@@ -6,7 +6,7 @@ import colorMap from './colorMap';
 const Controls = props => {
   return (
     <div className="player-select--wrapper">
-      <div className="player-select">
+      <div>
         <Select
           player={props.selected}
           className="stat chevron"
@@ -23,18 +23,11 @@ const Controls = props => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            padding: '0.2rem',
-            borderRadius: '100em',
             border: '5px solid white',
             marginRight: '1rem',
             color: 'white',
           }}
         >
-          <img
-            style={{ border: `6px solid ${colorMap.ghost}` }}
-            className="player"
-            src="./assets/steph.png"
-          />
           <div style={{ marginRight: '1rem' }}>
             <p style={{ fontWeight: '700', margin: '0' }}>Steph Curry</p>
             <p style={{ fontSize: '.9rem', margin: '0', marginTop: '.2rem' }}>

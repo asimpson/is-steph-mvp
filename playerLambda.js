@@ -53,10 +53,13 @@ const playerLambda = (event, context, callback) => {
   ].url}.html`;
 
   Promise.all([perGame(gameLog), currentAvgs(avg, event.player)]).then(x => {
+    const date = new Date().toISOString();
+
     const data = {
       perGame: x[0],
       avgs: x[1],
       displayName: playerMap[event.player].displayName,
+      date,
     };
     const params = {
       Bucket: process.env.bucket,

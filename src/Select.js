@@ -9,21 +9,18 @@ const Select = props => {
     backgroundImage: props.selected
       ? `url('./assets/${props.selected}.png'), url(/assets/${props.selected}-chevron.svg)`
       : 'none',
-    backgroundSize: '60px auto, auto',
+    backgroundSize: '50px auto, auto',
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: '5px center, 93% center',
-    paddingLeft: '70px',
+    backgroundPosition: '11px center, 93% center',
+    paddingLeft: '80px',
   };
+
   const style = {
-    WebkitAppearance: 'none',
-    MozAppearance: 'none',
     backgroundColor: 'white',
     border: 'none',
-    borderRadius: '35px',
     fontSize: '16px',
     fontWeight: 'bold',
     padding: '1rem',
-    appearance: 'none',
     paddingRight: '3rem',
     boxShadow: '8px 8px 16px 0 rgba(0,0,0,0.06)',
     color: 'black',
