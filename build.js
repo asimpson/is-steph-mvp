@@ -3,12 +3,16 @@ const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');
 const shelljs = require('shelljs');
-const mime = require('content-type-mime');
 const globby = require('globby');
 
 const S3 = new aws.S3();
 const stdin = process.stdin;
 const css = [];
+const mimeTypes = {
+  '.png': 'image/png',
+  '.js': 'application/javascript',
+  '.svg': 'image/svg+xml',
+};
 
 stdin.on('data', data => css.push(data));
 
@@ -43,7 +47,7 @@ const upload = (file, i) =>
         Body: fs.readFileSync(file),
         Key: file.split('./')[1],
         Bucket: 'mvp-demo',
-        ContentType: mime(path.basename(file)),
+        ContentType: mimeTypes[path.parse(file).ext],
         ACL: 'public-read',
       },
       (err, data) => {

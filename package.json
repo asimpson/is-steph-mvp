@@ -19,7 +19,6 @@
     "webpack": "^4.0.0",
     "webpack-cli": "^2.0.9",
     "shelljs": "^0.8.1",
-    "content-type-mime": "^1.1.0",
     "globby": "^8.0.1",
     "htmlparser": "^1.7.7",
     "htmlparser2": "^3.9.2",
