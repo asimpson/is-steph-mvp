@@ -267,15 +267,15 @@ export default class App extends Component {
           className="why"
         >
           <p>
-            Some weeks ago{' '}
+            Some weeks ago,{' '}
             <a href="https://www.reddit.com/r/nba/comments/7tkbcu/in_the_12_games_since_steph_curry_has_come_back/">
               a topic was posted to the /r/nba subreddit
             </a>{' '}
             contrasting Steph's stats this season with his stats from his
-            last MVP season which is also the only <em>unanimous</em> MVP
+            last MVP season, which is also the only <em>unanimous</em> MVP
             season. We thought it would be interesting to use that historic MVP
             run as a baseline to compare not only Steph but all of this year's
-            MVP candidates.
+            MVP contenders.
           </p>
           <p>
             The main graph illustrates PPG, APG, and RPG. The bar graphs
@@ -289,7 +289,7 @@ export default class App extends Component {
           </p>
           <p>
             If you have any questions or concerns about the data or the project
-            in general hit us up on Twitter{' '}
+            in general, hit us up on Twitter{' '}
             <a href="https://twitter.com/jeremyloyd">@jeremyloyd</a> or{' '}
             <a href="https://twitter.com/a_simpson">@a_simpson</a>
           </p>
