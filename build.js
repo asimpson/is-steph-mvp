@@ -83,10 +83,11 @@ const clear = () => {
   });
 };
 
-const assets = globby.sync('./assets/*');
+const assets = globby.sync([
+  './assets/*',
+  '!./assets/*.css',
+  '!./assets/*.mp3',
+]);
 const dist = globby.sync('./dist/*');
 
-Promise.all([
-  assets.filter(x => path.parse(x).ext !== '.css').forEach(upload),
-  dist.forEach(upload),
-]).then(() => clear());
+Promise.all([assets.forEach(upload), dist.forEach(upload)]).then(() => clear());
