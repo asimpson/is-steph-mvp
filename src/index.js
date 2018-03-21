@@ -10,8 +10,8 @@ const request = url =>
   );
 
 Promise.all([
-  request('https://s3.amazonaws.com/mvp-demo/data/ghost.json'),
-  request('https://s3.amazonaws.com/mvp-demo/data/steph.json'),
+  request('/data/ghost.json'),
+  request('/data/steph.json'),
 ]).then(x => {
   ReactDOM.render(
     <App current={x[1]} ghost={x[0]} />,

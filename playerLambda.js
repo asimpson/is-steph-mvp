@@ -2,8 +2,31 @@ const cheerio = require('cheerio');
 const axios = require('axios');
 const htmlparser = require('htmlparser2');
 const aws = require('aws-sdk');
+const secrets = require('./config.js');
 
 const s3 = new aws.S3({ region: 'us-east-1' });
+const CF = new aws.CloudFront();
+
+const clear = cb => {
+  const cfParams = {
+    DistributionId: secrets.cf,
+    InvalidationBatch: {
+      CallerReference: `${Date.now()}`,
+      Paths: {
+        Quantity: 1,
+        Items: ['/data/*'],
+      },
+    },
+  };
+
+  CF.createInvalidation(cfParams, (err, data) => {
+    if (err) {
+      cb(`🔥 Error running: ${err}`);
+    } else {
+      cb(null, `✅ Done: ${JSON.stringify(data)}`);
+    }
+  });
+};
 
 const playerMap = {
   steph: {
@@ -74,7 +97,8 @@ const playerLambda = (event, context, callback) => {
       }
 
       if (uploadData) {
-        callback(null, uploadData);
+        console.log(uploadData);
+        clear(callback);
       }
     });
   });

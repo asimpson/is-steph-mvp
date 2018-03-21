@@ -70,11 +70,11 @@ export default class App extends Component {
           .bg}`
       );
     const data = {
-      harden: 'https://s3.amazonaws.com/mvp-demo/data/harden.json',
-      steph: 'https://s3.amazonaws.com/mvp-demo/data/steph.json',
-      davis: 'https://s3.amazonaws.com/mvp-demo/data/davis.json',
-      dame: 'https://s3.amazonaws.com/mvp-demo/data/dame.json',
-      freak: 'https://s3.amazonaws.com/mvp-demo/data/freak.json',
+      harden: '/data/harden.json',
+      steph: '/data/steph.json',
+      davis: '/data/davis.json',
+      dame: '/data/dame.json',
+      freak: '/demo/data/freak.json',
     };
     request(data[selection]).then(x => {
       this.setState(prevState => {

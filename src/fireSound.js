@@ -21,10 +21,7 @@ const fireSound = (buffer, cb) => {
 
   if (!buffer) {
     axios
-      .get(
-        'http://mvp-demo.s3-website-us-east-1.amazonaws.com/assets/hey-hey.mp3',
-        { responseType: 'arraybuffer' }
-      )
+      .get('/assets/hey-hey.mp3', { responseType: 'arraybuffer' })
       .then(({ data }) => {
         const dataAsBuffer = ab2str(data);
         cb(dataAsBuffer);

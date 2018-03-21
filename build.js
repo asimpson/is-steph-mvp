@@ -5,7 +5,10 @@ const cheerio = require('cheerio');
 const shelljs = require('shelljs');
 const globby = require('globby');
 
+const secrets = require('./config.js');
+
 const S3 = new aws.S3();
+const CF = new aws.CloudFront();
 const stdin = process.stdin;
 const css = [];
 const mimeTypes = {
@@ -59,10 +62,31 @@ const upload = (file, i) =>
     );
   });
 
+const clear = () => {
+  const cfParams = {
+    DistributionId: secrets.cf,
+    InvalidationBatch: {
+      CallerReference: `${Date.now()}`,
+      Paths: {
+        Quantity: 1,
+        Items: ['/*'],
+      },
+    },
+  };
+
+  CF.createInvalidation(cfParams, (err, data) => {
+    if (err) {
+      console.log(`🔥 Error running: ${err}`);
+    } else {
+      console.log(`✅ Done: ${JSON.stringify(data)}`);
+    }
+  });
+};
+
 const assets = globby.sync('./assets/*');
 const dist = globby.sync('./dist/*');
 
 Promise.all([
   assets.filter(x => path.parse(x).ext !== '.css').forEach(upload),
   dist.forEach(upload),
-]).then(() => console.log('done'));
+]).then(() => clear());
