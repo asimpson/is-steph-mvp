@@ -75,6 +75,7 @@ export default class App extends Component {
       davis: '/data/davis.json',
       dame: '/data/dame.json',
       freak: '/data/freak.json',
+      lebron: '/data/lebron.json',
     };
     request(data[selection]).then(x => {
       this.setState(prevState => {

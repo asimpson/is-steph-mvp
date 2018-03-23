@@ -1,0 +1,440 @@
+{
+  "perGame": [
+    {
+      "points": "29",
+      "opp": "BOS",
+      "assists": "9",
+      "rebounds": "16"
+    },
+    {
+      "points": "24",
+      "opp": "MIL",
+      "assists": "8",
+      "rebounds": "5"
+    },
+    {
+      "points": "22",
+      "opp": "ORL",
+      "assists": "2",
+      "rebounds": "4"
+    },
+    {
+      "points": "34",
+      "opp": "CHI",
+      "assists": "13",
+      "rebounds": "2"
+    },
+    {
+      "points": "29",
+      "opp": "BRK",
+      "assists": "13",
+      "rebounds": "10"
+    },
+    {
+      "points": "18",
+      "opp": "NOP",
+      "assists": "8",
+      "rebounds": "3"
+    },
+    {
+      "points": "16",
+      "opp": "NYK",
+      "assists": "7",
+      "rebounds": "10"
+    },
+    {
+      "points": "33",
+      "opp": "IND",
+      "assists": "11",
+      "rebounds": "6"
+    },
+    {
+      "points": "57",
+      "opp": "WAS",
+      "assists": "7",
+      "rebounds": "11"
+    },
+    {
+      "points": "26",
+      "opp": "ATL",
+      "assists": "13",
+      "rebounds": "5"
+    },
+    {
+      "points": "30",
+      "opp": "MIL",
+      "assists": "9",
+      "rebounds": "8"
+    },
+    {
+      "points": "33",
+      "opp": "HOU",
+      "assists": "7",
+      "rebounds": "4"
+    },
+    {
+      "points": "19",
+      "opp": "DAL",
+      "assists": "4",
+      "rebounds": "11"
+    },
+    {
+      "points": "23",
+      "opp": "NYK",
+      "assists": "12",
+      "rebounds": "9"
+    },
+    {
+      "points": "31",
+      "opp": "CHO",
+      "assists": "8",
+      "rebounds": "6"
+    },
+    {
+      "points": "39",
+      "opp": "LAC",
+      "assists": "6",
+      "rebounds": "14"
+    },
+    {
+      "points": "18",
+      "opp": "DET",
+      "assists": "8",
+      "rebounds": "2"
+    },
+    {
+      "points": "33",
+      "opp": "BRK",
+      "assists": "5",
+      "rebounds": "6"
+    },
+    {
+      "points": "27",
+      "opp": "CHO",
+      "assists": "13",
+      "rebounds": "16"
+    },
+    {
+      "points": "30",
+      "opp": "PHI",
+      "assists": "6",
+      "rebounds": "14"
+    },
+    {
+      "points": "21",
+      "opp": "MIA",
+      "assists": "6",
+      "rebounds": "12"
+    },
+    {
+      "points": "24",
+      "opp": "ATL",
+      "assists": "12",
+      "rebounds": "6"
+    },
+    {
+      "points": "34",
+      "opp": "MEM",
+      "assists": "12",
+      "rebounds": "2"
+    },
+    {
+      "points": "23",
+      "opp": "CHI",
+      "assists": "6",
+      "rebounds": "7"
+    },
+    {
+      "points": "32",
+      "opp": "SAC",
+      "assists": "9",
+      "rebounds": "11"
+    },
+    {
+      "points": "29",
+      "opp": "IND",
+      "assists": "8",
+      "rebounds": "10"
+    },
+    {
+      "points": "30",
+      "opp": "PHI",
+      "assists": "13",
+      "rebounds": "13"
+    },
+    {
+      "points": "25",
+      "opp": "ATL",
+      "assists": "17",
+      "rebounds": "7"
+    },
+    {
+      "points": "25",
+      "opp": "LAL",
+      "assists": "12",
+      "rebounds": "12"
+    },
+    {
+      "points": "29",
+      "opp": "UTA",
+      "assists": "10",
+      "rebounds": "11"
+    },
+    {
+      "points": "20",
+      "opp": "WAS",
+      "assists": "15",
+      "rebounds": "11"
+    },
+    {
+      "points": "39",
+      "opp": "MIL",
+      "assists": "7",
+      "rebounds": "1"
+    },
+    {
+      "points": "34",
+      "opp": "CHI",
+      "assists": "9",
+      "rebounds": "6"
+    },
+    {
+      "points": "20",
+      "opp": "GSW",
+      "assists": "6",
+      "rebounds": "6"
+    },
+    {
+      "points": "16",
+      "opp": "SAC",
+      "assists": "14",
+      "rebounds": "10"
+    },
+    {
+      "points": "29",
+      "opp": "UTA",
+      "assists": "6",
+      "rebounds": "8"
+    },
+    {
+      "points": "24",
+      "opp": "POR",
+      "assists": "8",
+      "rebounds": "6"
+    },
+    {
+      "points": "19",
+      "opp": "BOS",
+      "assists": "6",
+      "rebounds": "7"
+    },
+    {
+      "points": "33",
+      "opp": "ORL",
+      "assists": "9",
+      "rebounds": "10"
+    },
+    {
+      "points": "10",
+      "opp": "MIN",
+      "assists": "5",
+      "rebounds": "8"
+    },
+    {
+      "points": "26",
+      "opp": "TOR",
+      "assists": "1",
+      "rebounds": "3"
+    },
+    {
+      "points": "27",
+      "opp": "IND",
+      "assists": "11",
+      "rebounds": "8"
+    },
+    {
+      "points": "32",
+      "opp": "GSW",
+      "assists": "6",
+      "rebounds": "8"
+    },
+    {
+      "points": "16",
+      "opp": "ORL",
+      "assists": "6",
+      "rebounds": "5"
+    },
+    {
+      "points": "18",
+      "opp": "OKC",
+      "assists": "7",
+      "rebounds": "3"
+    },
+    {
+      "points": "28",
+      "opp": "SAS",
+      "assists": "7",
+      "rebounds": "9"
+    },
+    {
+      "points": "26",
+      "opp": "IND",
+      "assists": "11",
+      "rebounds": "10"
+    },
+    {
+      "points": "25",
+      "opp": "DET",
+      "assists": "14",
+      "rebounds": "8"
+    },
+    {
+      "points": "21",
+      "opp": "DET",
+      "assists": "7",
+      "rebounds": "6"
+    },
+    {
+      "points": "24",
+      "opp": "MIA",
+      "assists": "5",
+      "rebounds": "11"
+    },
+    {
+      "points": "11",
+      "opp": "HOU",
+      "assists": "9",
+      "rebounds": "9"
+    },
+    {
+      "points": "25",
+      "opp": "ORL",
+      "assists": "5",
+      "rebounds": "10"
+    },
+    {
+      "points": "37",
+      "opp": "MIN",
+      "assists": "15",
+      "rebounds": "10"
+    },
+    {
+      "points": "22",
+      "opp": "ATL",
+      "assists": "19",
+      "rebounds": "12"
+    },
+    {
+      "points": "24",
+      "opp": "BOS",
+      "assists": "10",
+      "rebounds": "8"
+    },
+    {
+      "points": "37",
+      "opp": "OKC",
+      "assists": "8",
+      "rebounds": "8"
+    },
+    {
+      "points": "32",
+      "opp": "WAS",
+      "assists": "8",
+      "rebounds": "9"
+    },
+    {
+      "points": "18",
+      "opp": "MEM",
+      "assists": "11",
+      "rebounds": "14"
+    },
+    {
+      "points": "33",
+      "opp": "SAS",
+      "assists": "9",
+      "rebounds": "13"
+    },
+    {
+      "points": "31",
+      "opp": "BRK",
+      "assists": "11",
+      "rebounds": "12"
+    },
+    {
+      "points": "30",
+      "opp": "PHI",
+      "assists": "8",
+      "rebounds": "9"
+    },
+    {
+      "points": "25",
+      "opp": "DEN",
+      "assists": "15",
+      "rebounds": "10"
+    },
+    {
+      "points": "31",
+      "opp": "DET",
+      "assists": "7",
+      "rebounds": "7"
+    },
+    {
+      "points": "39",
+      "opp": "DEN",
+      "assists": "10",
+      "rebounds": "8"
+    },
+    {
+      "points": "25",
+      "opp": "LAC",
+      "assists": "6",
+      "rebounds": "10"
+    },
+    {
+      "points": "24",
+      "opp": "LAL",
+      "assists": "7",
+      "rebounds": "10"
+    },
+    {
+      "points": "28",
+      "opp": "PHO",
+      "assists": "11",
+      "rebounds": "12"
+    },
+    {
+      "points": "35",
+      "opp": "POR",
+      "assists": "6",
+      "rebounds": "14"
+    },
+    {
+      "points": "33",
+      "opp": "CHI",
+      "assists": "12",
+      "rebounds": "13"
+    },
+    {
+      "points": "40",
+      "opp": "MIL",
+      "assists": "10",
+      "rebounds": "12"
+    },
+    {
+      "points": "35",
+      "opp": "TOR",
+      "assists": "17",
+      "rebounds": "7"
+    }
+  ],
+  "avgs": {
+    "PER": "28.5",
+    "TS": ".622",
+    "WS": ".218",
+    "points": "27.4",
+    "assists": "9.1",
+    "rebounds": "8.6"
+  },
+  "displayName": "LeBron",
+  "date": "2018-03-23T14:32:42.720Z"
+}

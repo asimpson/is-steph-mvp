@@ -45,6 +45,7 @@ const Controls = props => {
           <option value="davis">Anthony Davis</option>
           <option value="freak">Giannis Antetokounmpo</option>
           <option value="dame">Damian Lillard</option>
+          <option value="lebron">Lebron James</option>
         </Select>
       </div>
     </div>

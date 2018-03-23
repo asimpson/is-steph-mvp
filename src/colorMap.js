@@ -9,7 +9,7 @@ export default {
     line: '#ffbc00',
     circle: '#ff8100',
     rectbg: '#77002c',
-    rect: '#00205a',
+    rect: '#ffbc00',
     recttext: '#ffbc00',
     shapetext: '#3a0016',
     rectempty: '#8b0048',
