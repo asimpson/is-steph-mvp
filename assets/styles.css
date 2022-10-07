@@ -137,7 +137,7 @@ footer p {
 .players-select__ghost {
   padding: 0.2rem;
   padding-left: 80px;
-  background: url('/assets/steph.png');
+  background: url('assets/steph.png');
   background-size: 50px;
   background-repeat: no-repeat;
   background-position: 11px center;

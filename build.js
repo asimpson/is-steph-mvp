@@ -16,17 +16,17 @@ stdin.on("end", () => {
   $("link").remove();
   $("style").empty().html(processed);
   fs.writeFileSync("dist/index.html", $.html());
+  shelljs.exec("cp -r data dist/data");
 });
 
 const copyFiles = (file, i) =>
   new Promise((resolve, reject) => {
-    resolve(shelljs.exec(`cp ${file} dist/${file}`));
+    const filePath = file.slice(2);
+    const dir = path.dirname(filePath);
+    shelljs.mkdir("-p", `dist/${dir}`);
+    resolve(shelljs.exec(`cp ${filePath} dist/${filePath}`));
   });
 
-const assets = globby.sync([
-  "./assets/*",
-  "!./assets/*.css",
-  "!./assets/*.mp3",
-]);
+const assets = globby.sync(["./assets/*"]);
 
 Promise.all([assets.forEach(copyFiles)]).then(console.log("done"));
